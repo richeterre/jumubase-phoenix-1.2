@@ -18,3 +18,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link "Add host", to: host_path(@conn, :new), class: "btn btn-primary" %>
