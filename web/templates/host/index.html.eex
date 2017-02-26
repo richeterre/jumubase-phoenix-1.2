@@ -1,0 +1,20 @@
+<h2>Hosts</h2>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>City</th>
+    <th>Country Code</th>
+    <th>Time Zone</th>
+  </thead>
+  <tbody>
+    <%= for host <- @hosts do %>
+      <tr>
+        <td><%= host.name %></td>
+        <td><%= host.city %></td>
+        <td><%= host.country_code %></td>
+        <td><%= host.time_zone %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
