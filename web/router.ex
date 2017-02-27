@@ -16,7 +16,7 @@ defmodule Jumubase.Router do
   scope "/", Jumubase do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", PageController, :home
     resources "/hosts", HostController, only: [:index, :new, :create]
   end
 
