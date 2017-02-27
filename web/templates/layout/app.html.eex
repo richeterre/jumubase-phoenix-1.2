@@ -14,12 +14,16 @@
   <body>
     <div class="container">
       <header class="header">
+        <h1>Jumu Nordost</h1>
+        <p class="lead">
+          Die Website für “Jugend musiziert”
+          an den Deutschen Schulen der Region Nord- und Osteuropa
+        </p>
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
+          <ul class="nav nav-pills">
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
           </ul>
         </nav>
-        <span class="logo"></span>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
