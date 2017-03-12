@@ -1,0 +1,17 @@
+$icon-font-path: "/fonts/"; /* use fonts from priv/static/fonts/ */
+$font-size-base: 16px;
+$font-family-sans-serif: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@import "bootstrap"; /* imports node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss */
+
+body {
+  margin-top: 50px;
+}
+
+/* Hide empty flash messages */
+.alert:empty { display: none; }
+
+/* Phoenix inline forms in links and buttons */
+form.link, form.button {
+  display: inline;
+}
