@@ -8,6 +8,8 @@ use Mix.Config
 # General application configuration
 config :jumubase,
   ecto_repos: [Jumubase.Repo]
+config :jumubase, Jumubase.Gettext,
+  default_locale: "de"
 
 # Configures the endpoint
 config :jumubase, Jumubase.Endpoint,
