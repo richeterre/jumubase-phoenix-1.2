@@ -1,11 +1,11 @@
-<h2>Hosts</h2>
+<h2><%= gettext("Hosts") %></h2>
 
 <table class="table">
   <thead>
-    <th>Name</th>
-    <th>City</th>
-    <th>Country Code</th>
-    <th>Time Zone</th>
+    <th><%= gettext("Name") %></th>
+    <th><%= gettext("City") %></th>
+    <th><%= gettext("Country code") %></th>
+    <th><%= gettext("Time zone") %></th>
   </thead>
   <tbody>
     <%= for host <- @hosts do %>
@@ -19,4 +19,4 @@
   </tbody>
 </table>
 
-<%= link "Add host", to: host_path(@conn, :new), class: "btn btn-primary" %>
+<%= link gettext("Add Host"), to: host_path(@conn, :new), class: "btn btn-primary" %>

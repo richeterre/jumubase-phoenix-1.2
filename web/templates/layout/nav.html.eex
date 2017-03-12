@@ -9,17 +9,17 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img alt="Jumu-Logo" src="/images/jumuball.png">
+        <%= img_tag "/images/jumuball.png", alt: gettext("Jumu logo") %>
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link "Home", to: page_path(@conn, :home) %></li>
+        <li><%= link gettext("Home"), to: page_path(@conn, :home) %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link "Internal pages", to: "#" %></li>
+        <li><%= link gettext("Internal pages"), to: "#" %></li>
       </ul>
     </div>
   </div>
