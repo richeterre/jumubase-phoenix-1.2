@@ -2,16 +2,16 @@ $icon-font-path: "/fonts/"; /* use fonts from priv/static/fonts/ */
 $font-size-base: 16px;
 $font-family-sans-serif: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-@import "bootstrap"; /* imports node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss */
+@import "bootstrap";
 
-body {
-  margin-top: 50px;
-}
+/* Make room for fixed top navbar */
+body { margin-top: 50px; }
+
+/* Make image fit into navbar */
+.navbar-brand > img { height: $line-height-computed; }
 
 /* Hide empty flash messages */
 .alert:empty { display: none; }
 
 /* Phoenix inline forms in links and buttons */
-form.link, form.button {
-  display: inline;
-}
+form.link, form.button { display: inline; }

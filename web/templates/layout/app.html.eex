@@ -14,17 +14,7 @@
   <body>
     <div class="container">
       <header class="header">
-        <h1>Jumu Nordost</h1>
-        <p class="lead">
-          Die Website für “Jugend musiziert”
-          an den Deutschen Schulen der Region Nord- und Osteuropa
-        </p>
-        <nav role="navigation">
-          <ul class="nav nav-pills">
-            <li><%= link "Home", to: page_path(@conn, :home) %></li>
-            <li><%= link "Hosts", to: host_path(@conn, :index) %></li>
-          </ul>
-        </nav>
+        <%= render "nav.html", conn: @conn %>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
