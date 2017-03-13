@@ -5,7 +5,7 @@ $font-family-sans-serif: Lato, sans-serif;
 @import "bootstrap";
 
 /* Make room for fixed top navbar */
-body { margin-top: 50px; }
+body { margin-top: $navbar-height + $line-height-computed; }
 
 /* Make image fit into navbar */
 .navbar-brand > img { height: $line-height-computed; }
