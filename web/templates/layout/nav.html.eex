@@ -19,7 +19,20 @@
         <li><%= link gettext("Home"), to: page_path(@conn, :home) %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link gettext("Internal pages"), to: "#" %></li>
+        <%= if signed_in?(@conn) do %>
+          <li>
+            <span class="navbar-text"><%= current_user(@conn).email %></span>
+          </li>
+          <li>
+            <%= link gettext("Sign Out"),
+              to: session_path(@conn, :delete, :access),
+              method: :delete, class: "navbar-text" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link gettext("Internal Pages"), to: session_path(@conn, :new) %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

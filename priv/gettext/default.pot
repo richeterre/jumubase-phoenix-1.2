@@ -14,10 +14,6 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: web/templates/layout/nav.html.eex:22
-msgid "Internal pages"
-msgstr ""
-
 #: web/templates/host/index.html.eex:22
 msgid "Add Host"
 msgstr ""
@@ -66,7 +62,8 @@ msgstr ""
 msgid "Hosts"
 msgstr ""
 
-#: web/templates/user/index.html.eex:5 web/templates/user/new.html.eex:7
+#: web/templates/session/new.html.eex:5 web/templates/user/index.html.eex:5
+#: web/templates/user/new.html.eex:7
 msgid "Email"
 msgstr ""
 
@@ -86,7 +83,7 @@ msgstr ""
 msgid "New User"
 msgstr ""
 
-#: web/templates/user/new.html.eex:12
+#: web/templates/session/new.html.eex:9 web/templates/user/new.html.eex:12
 msgid "Password"
 msgstr ""
 
@@ -96,4 +93,32 @@ msgstr ""
 
 #: web/controllers/user_controller.ex:23
 msgid "The user \"%{email}\" was created."
+msgstr ""
+
+#: web/templates/layout/nav.html.eex:33
+msgid "Internal Pages"
+msgstr ""
+
+#: web/templates/session/new.html.eex:1 web/templates/session/new.html.eex:12
+msgid "Sign In"
+msgstr ""
+
+#: web/templates/layout/nav.html.eex:27
+msgid "Sign Out"
+msgstr ""
+
+#: web/controllers/session_controller.ex:12
+msgid "You are now signed in."
+msgstr ""
+
+#: web/controllers/session_controller.ex:16
+msgid "You could not be signed in."
+msgstr ""
+
+#: web/controllers/auth.ex:30
+msgid "Please sign in to access this page."
+msgstr ""
+
+#: web/controllers/auth.ex:37
+msgid "Please sign in with sufficient permissions to access this page."
 msgstr ""

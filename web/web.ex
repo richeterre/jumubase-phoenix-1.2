@@ -50,6 +50,7 @@ defmodule Jumubase.Web do
       use Phoenix.HTML
 
       import Jumubase.Router.Helpers
+      import Jumubase.AuthHelpers
       import Jumubase.ErrorHelpers
       import Jumubase.Gettext
     end

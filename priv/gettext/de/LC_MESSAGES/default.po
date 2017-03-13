@@ -14,10 +14,6 @@ msgstr ""
 msgid "Home"
 msgstr "Startseite"
 
-#: web/templates/layout/nav.html.eex:22
-msgid "Internal pages"
-msgstr "Interne Seiten"
-
 #: web/templates/host/index.html.eex:22
 msgid "Add Host"
 msgstr "Neue Schule erstellen"
@@ -66,7 +62,8 @@ msgstr "Zeitzone"
 msgid "Hosts"
 msgstr "Schulen"
 
-#: web/templates/user/index.html.eex:5 web/templates/user/new.html.eex:7
+#: web/templates/session/new.html.eex:5 web/templates/user/index.html.eex:5
+#: web/templates/user/new.html.eex:7
 msgid "Email"
 msgstr "E-Mail"
 
@@ -86,7 +83,7 @@ msgstr "Benutzer hinzufügen"
 msgid "New User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/user/new.html.eex:12
+#: web/templates/session/new.html.eex:9 web/templates/user/new.html.eex:12
 msgid "Password"
 msgstr "Passwort"
 
@@ -97,3 +94,31 @@ msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
 #: web/controllers/user_controller.ex:23
 msgid "The user \"%{email}\" was created."
 msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."
+
+#: web/templates/layout/nav.html.eex:33
+msgid "Internal Pages"
+msgstr "Interne Seiten"
+
+#: web/templates/session/new.html.eex:1 web/templates/session/new.html.eex:12
+msgid "Sign In"
+msgstr "Anmelden"
+
+#: web/templates/layout/nav.html.eex:27
+msgid "Sign Out"
+msgstr "Abmelden"
+
+#: web/controllers/session_controller.ex:12
+msgid "You are now signed in."
+msgstr "Du bist jetzt angemeldet."
+
+#: web/controllers/session_controller.ex:16
+msgid "You could not be signed in."
+msgstr "Die Anmeldung ist fehlgeschlagen."
+
+#: web/controllers/auth.ex:30
+msgid "Please sign in to access this page."
+msgstr "Bitte melde dich an, um diese Seite zu besuchen."
+
+#: web/controllers/auth.ex:37
+msgid "Please sign in with sufficient permissions to access this page."
+msgstr "Bitte melde dich mit ausreichenden Rechten an, um diese Seite zu besuchen."
