@@ -18,6 +18,7 @@ defmodule Jumubase.Router do
 
     get "/", PageController, :home
     resources "/hosts", HostController, only: [:index, :new, :create]
+    resources "/users", UserController, only: [:index, :new, :create]
   end
 
   # Other scopes may use custom stacks.

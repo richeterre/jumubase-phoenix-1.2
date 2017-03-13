@@ -22,15 +22,15 @@ msgstr "Interne Seiten"
 msgid "Add Host"
 msgstr "Neue Schule erstellen"
 
-#: web/templates/host/index.html.eex:6 web/templates/host/new.html.eex:16
+#: web/templates/host/index.html.eex:6 web/templates/host/new.html.eex:12
 msgid "City"
 msgstr "Stadt"
 
-#: web/templates/host/index.html.eex:7 web/templates/host/new.html.eex:21
+#: web/templates/host/index.html.eex:7 web/templates/host/new.html.eex:17
 msgid "Country code"
 msgstr "Ländercode"
 
-#: web/templates/host/new.html.eex:30
+#: web/templates/host/new.html.eex:26
 msgid "Create Host"
 msgstr "Schule hinzufügen"
 
@@ -42,7 +42,7 @@ msgstr "Interner Serverfehler"
 msgid "Jumu logo"
 msgstr "Jumu-Logo"
 
-#: web/templates/host/index.html.eex:5 web/templates/host/new.html.eex:11
+#: web/templates/host/index.html.eex:5 web/templates/host/new.html.eex:7
 msgid "Name"
 msgstr "Name"
 
@@ -54,14 +54,46 @@ msgstr "Neue Schule erstellen"
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: web/templates/host/new.html.eex:6
+#: web/templates/shared/form_errors.html.eex:4
 msgid "Please fix the errors below before submitting."
 msgstr "Bitte korrigiere zunächst die untenstehenden Fehler."
 
-#: web/templates/host/index.html.eex:8 web/templates/host/new.html.eex:26
+#: web/templates/host/index.html.eex:8 web/templates/host/new.html.eex:22
 msgid "Time zone"
 msgstr "Zeitzone"
 
 #: web/templates/host/index.html.eex:1
 msgid "Hosts"
 msgstr "Schulen"
+
+#: web/templates/user/index.html.eex:5 web/templates/user/new.html.eex:7
+msgid "Email"
+msgstr "E-Mail"
+
+#: web/templates/user/index.html.eex:1
+msgid "Users"
+msgstr "Benutzer"
+
+#: web/templates/user/index.html.eex:16
+msgid "Add User"
+msgstr "Neuen Benutzer erstellen"
+
+#: web/templates/user/new.html.eex:16
+msgid "Create User"
+msgstr "Benutzer hinzufügen"
+
+#: web/templates/user/new.html.eex:1
+msgid "New User"
+msgstr "Neuen Benutzer erstellen"
+
+#: web/templates/user/new.html.eex:12
+msgid "Password"
+msgstr "Passwort"
+
+#: web/controllers/host_controller.ex:23
+msgid "The host \"%{name}\" was created."
+msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
+
+#: web/controllers/user_controller.ex:23
+msgid "The user \"%{email}\" was created."
+msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."

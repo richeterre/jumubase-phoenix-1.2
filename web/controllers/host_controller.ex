@@ -19,7 +19,8 @@ defmodule Jumubase.HostController do
     case Repo.insert(changeset) do
       {:ok, host} ->
         conn
-        |> put_flash(:info, "#{host.name} created!")
+        |> put_flash(:success,
+          gettext("The host \"%{name}\" was created.", name: host.name))
         |> redirect(to: host_path(conn, :index))
       {:error, changeset} ->
         conn

@@ -1,0 +1,7 @@
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>
+      <%= gettext("Please fix the errors below before submitting.") %>
+    </p>
+  </div>
+<% end %>

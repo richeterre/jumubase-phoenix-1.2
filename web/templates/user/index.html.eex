@@ -1,0 +1,16 @@
+<h2><%= gettext("Users") %></h2>
+
+<table class="table">
+  <thead>
+    <th><%= gettext("Email") %></th>
+  </thead>
+  <tbody>
+    <%= for user <- @users do %>
+      <tr>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link gettext("Add User"), to: user_path(@conn, :new), class: "btn btn-primary" %>
