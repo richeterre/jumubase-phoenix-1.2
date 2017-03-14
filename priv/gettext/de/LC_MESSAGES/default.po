@@ -14,19 +14,21 @@ msgstr ""
 msgid "Home"
 msgstr "Startseite"
 
-#: web/templates/host/index.html.eex:22
+#: web/templates/internal/host/index.html.eex:22
 msgid "Add Host"
 msgstr "Neue Schule erstellen"
 
-#: web/templates/host/index.html.eex:6 web/templates/host/new.html.eex:12
+#: web/templates/internal/host/index.html.eex:6
+#: web/templates/internal/host/new.html.eex:12
 msgid "City"
 msgstr "Stadt"
 
-#: web/templates/host/index.html.eex:7 web/templates/host/new.html.eex:17
+#: web/templates/internal/host/index.html.eex:7
+#: web/templates/internal/host/new.html.eex:17
 msgid "Country code"
 msgstr "Ländercode"
 
-#: web/templates/host/new.html.eex:26
+#: web/templates/internal/host/new.html.eex:26
 msgid "Create Host"
 msgstr "Schule hinzufügen"
 
@@ -38,11 +40,13 @@ msgstr "Interner Serverfehler"
 msgid "Jumu logo"
 msgstr "Jumu-Logo"
 
-#: web/templates/host/index.html.eex:5 web/templates/host/new.html.eex:7
+#: web/templates/internal/host/index.html.eex:5
+#: web/templates/internal/host/new.html.eex:7
+#: web/templates/internal/user/index.html.eex:5
 msgid "Name"
 msgstr "Name"
 
-#: web/templates/host/new.html.eex:1
+#: web/templates/internal/host/new.html.eex:1
 msgid "New Host"
 msgstr "Neue Schule erstellen"
 
@@ -54,44 +58,47 @@ msgstr "Seite nicht gefunden"
 msgid "Please fix the errors below before submitting."
 msgstr "Bitte korrigiere zunächst die untenstehenden Fehler."
 
-#: web/templates/host/index.html.eex:8 web/templates/host/new.html.eex:22
+#: web/templates/internal/host/index.html.eex:8
+#: web/templates/internal/host/new.html.eex:22
 msgid "Time zone"
 msgstr "Zeitzone"
 
-#: web/templates/host/index.html.eex:1
+#: web/templates/internal/host/index.html.eex:1
 msgid "Hosts"
 msgstr "Schulen"
 
-#: web/templates/session/new.html.eex:5 web/templates/user/index.html.eex:5
-#: web/templates/user/new.html.eex:7
+#: web/templates/internal/user/index.html.eex:6
+#: web/templates/internal/user/new.html.eex:17
+#: web/templates/session/new.html.eex:5
 msgid "Email"
 msgstr "E-Mail"
 
-#: web/templates/user/index.html.eex:1
+#: web/templates/internal/user/index.html.eex:1
 msgid "Users"
 msgstr "Benutzer"
 
-#: web/templates/user/index.html.eex:16
+#: web/templates/internal/user/index.html.eex:18
 msgid "Add User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/user/new.html.eex:16
+#: web/templates/internal/user/new.html.eex:26
 msgid "Create User"
 msgstr "Benutzer hinzufügen"
 
-#: web/templates/user/new.html.eex:1
+#: web/templates/internal/user/new.html.eex:1
 msgid "New User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/session/new.html.eex:9 web/templates/user/new.html.eex:12
+#: web/templates/internal/user/new.html.eex:22
+#: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr "Passwort"
 
-#: web/controllers/host_controller.ex:23
+#: web/controllers/internal/host_controller.ex:23
 msgid "The host \"%{name}\" was created."
 msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
 
-#: web/controllers/user_controller.ex:23
+#: web/controllers/internal/user_controller.ex:23
 msgid "The user \"%{email}\" was created."
 msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."
 
@@ -122,3 +129,11 @@ msgstr "Bitte melde dich an, um diese Seite zu besuchen."
 #: web/controllers/auth.ex:37
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr "Bitte melde dich mit ausreichenden Rechten an, um diese Seite zu besuchen."
+
+#: web/templates/internal/user/new.html.eex:7
+msgid "First name"
+msgstr "Vorname"
+
+#: web/templates/internal/user/new.html.eex:12
+msgid "Last name"
+msgstr "Nachname"

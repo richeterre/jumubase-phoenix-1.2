@@ -4,6 +4,16 @@
   <%= render Jumubase.SharedView, "form_errors.html", changeset: @changeset %>
 
   <div class="form-group">
+    <%= label f, :first_name, gettext("First name") %>
+    <%= text_input f, :first_name, class: "form-control" %>
+    <%= error_tag f, :first_name %>
+  </div>
+  <div class="form-group">
+    <%= label f, :last_name, gettext("Last name") %>
+    <%= text_input f, :last_name, class: "form-control" %>
+    <%= error_tag f, :last_name %>
+  </div>
+  <div class="form-group">
     <%= label f, :email, gettext("Email") %>
     <%= text_input f, :email, class: "form-control" %>
     <%= error_tag f, :email %>

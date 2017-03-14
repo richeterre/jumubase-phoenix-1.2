@@ -14,19 +14,21 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: web/templates/host/index.html.eex:22
+#: web/templates/internal/host/index.html.eex:22
 msgid "Add Host"
 msgstr ""
 
-#: web/templates/host/index.html.eex:6 web/templates/host/new.html.eex:12
+#: web/templates/internal/host/index.html.eex:6
+#: web/templates/internal/host/new.html.eex:12
 msgid "City"
 msgstr ""
 
-#: web/templates/host/index.html.eex:7 web/templates/host/new.html.eex:17
+#: web/templates/internal/host/index.html.eex:7
+#: web/templates/internal/host/new.html.eex:17
 msgid "Country code"
 msgstr ""
 
-#: web/templates/host/new.html.eex:26
+#: web/templates/internal/host/new.html.eex:26
 msgid "Create Host"
 msgstr ""
 
@@ -38,11 +40,13 @@ msgstr ""
 msgid "Jumu logo"
 msgstr ""
 
-#: web/templates/host/index.html.eex:5 web/templates/host/new.html.eex:7
+#: web/templates/internal/host/index.html.eex:5
+#: web/templates/internal/host/new.html.eex:7
+#: web/templates/internal/user/index.html.eex:5
 msgid "Name"
 msgstr ""
 
-#: web/templates/host/new.html.eex:1
+#: web/templates/internal/host/new.html.eex:1
 msgid "New Host"
 msgstr ""
 
@@ -54,44 +58,47 @@ msgstr ""
 msgid "Please fix the errors below before submitting."
 msgstr ""
 
-#: web/templates/host/index.html.eex:8 web/templates/host/new.html.eex:22
+#: web/templates/internal/host/index.html.eex:8
+#: web/templates/internal/host/new.html.eex:22
 msgid "Time zone"
 msgstr ""
 
-#: web/templates/host/index.html.eex:1
+#: web/templates/internal/host/index.html.eex:1
 msgid "Hosts"
 msgstr ""
 
-#: web/templates/session/new.html.eex:5 web/templates/user/index.html.eex:5
-#: web/templates/user/new.html.eex:7
+#: web/templates/internal/user/index.html.eex:6
+#: web/templates/internal/user/new.html.eex:17
+#: web/templates/session/new.html.eex:5
 msgid "Email"
 msgstr ""
 
-#: web/templates/user/index.html.eex:1
+#: web/templates/internal/user/index.html.eex:1
 msgid "Users"
 msgstr ""
 
-#: web/templates/user/index.html.eex:16
+#: web/templates/internal/user/index.html.eex:18
 msgid "Add User"
 msgstr ""
 
-#: web/templates/user/new.html.eex:16
+#: web/templates/internal/user/new.html.eex:26
 msgid "Create User"
 msgstr ""
 
-#: web/templates/user/new.html.eex:1
+#: web/templates/internal/user/new.html.eex:1
 msgid "New User"
 msgstr ""
 
-#: web/templates/session/new.html.eex:9 web/templates/user/new.html.eex:12
+#: web/templates/internal/user/new.html.eex:22
+#: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr ""
 
-#: web/controllers/host_controller.ex:23
+#: web/controllers/internal/host_controller.ex:23
 msgid "The host \"%{name}\" was created."
 msgstr ""
 
-#: web/controllers/user_controller.ex:23
+#: web/controllers/internal/user_controller.ex:23
 msgid "The user \"%{email}\" was created."
 msgstr ""
 
@@ -121,4 +128,12 @@ msgstr ""
 
 #: web/controllers/auth.ex:37
 msgid "Please sign in with sufficient permissions to access this page."
+msgstr ""
+
+#: web/templates/internal/user/new.html.eex:7
+msgid "First name"
+msgstr ""
+
+#: web/templates/internal/user/new.html.eex:12
+msgid "Last name"
 msgstr ""

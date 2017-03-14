@@ -2,11 +2,13 @@
 
 <table class="table">
   <thead>
+    <th><%= gettext("Name") %></th>
     <th><%= gettext("Email") %></th>
   </thead>
   <tbody>
     <%= for user <- @users do %>
       <tr>
+        <td><%= "#{user.first_name} #{user.last_name}" %></td>
         <td><%= user.email %></td>
       </tr>
     <% end %>
