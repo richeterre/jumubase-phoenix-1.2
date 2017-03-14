@@ -21,7 +21,10 @@
       <ul class="nav navbar-nav navbar-right">
         <%= if signed_in?(@conn) do %>
           <li>
-            <span class="navbar-text"><%= current_user(@conn).email %></span>
+            <%= link to: internal_page_path(@conn, :home) do %>
+              <span class="glyphicon glyphicon-home"></span>
+              <%= current_user(@conn).first_name %>
+            <% end %>
           </li>
           <li>
             <%= link gettext("Sign Out"),

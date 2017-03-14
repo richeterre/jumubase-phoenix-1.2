@@ -31,6 +31,7 @@ defmodule Jumubase.Router do
   scope "/internal", Jumubase.Internal, as: :internal do
     pipe_through [:browser, :browser_auth]
 
+    get "/", PageController, :home
     resources "/hosts", HostController, only: [:index, :new, :create]
     resources "/users", UserController, only: [:index, :new, :create]
   end
