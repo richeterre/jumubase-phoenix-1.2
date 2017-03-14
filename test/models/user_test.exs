@@ -3,7 +3,7 @@ defmodule Jumubase.UserTest do
 
   alias Jumubase.User
 
-  @valid_attrs %{email: "some content", password_hash: "some content"}
+  @valid_attrs %{email: "email", password: "secret"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

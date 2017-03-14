@@ -6,16 +6,16 @@ defmodule Jumubase.ErrorViewTest do
 
   test "renders 404.html" do
     assert render_to_string(Jumubase.ErrorView, "404.html", []) ==
-           "Page not found"
+           "Seite nicht gefunden"
   end
 
   test "render 500.html" do
     assert render_to_string(Jumubase.ErrorView, "500.html", []) ==
-           "Internal server error"
+           "Interner Serverfehler"
   end
 
   test "render any other" do
     assert render_to_string(Jumubase.ErrorView, "505.html", []) ==
-           "Internal server error"
+           "Interner Serverfehler"
   end
 end
