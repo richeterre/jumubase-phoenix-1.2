@@ -1,4 +1,4 @@
-defmodule Jumubase.UserController do
+defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
   alias Jumubase.User
 
@@ -21,7 +21,7 @@ defmodule Jumubase.UserController do
         conn
         |> put_flash(:success,
           gettext("The user \"%{email}\" was created.", email: user.email))
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: internal_user_path(conn, :index))
       {:error, changeset} ->
         conn
         |> assign(:changeset, changeset)

@@ -1,4 +1,4 @@
-defmodule Jumubase.HostController do
+defmodule Jumubase.Internal.HostController do
   use Jumubase.Web, :controller
   alias Jumubase.Host
 
@@ -21,7 +21,7 @@ defmodule Jumubase.HostController do
         conn
         |> put_flash(:success,
           gettext("The host \"%{name}\" was created.", name: host.name))
-        |> redirect(to: host_path(conn, :index))
+        |> redirect(to: internal_host_path(conn, :index))
       {:error, changeset} ->
         conn
         |> assign(:changeset, changeset)

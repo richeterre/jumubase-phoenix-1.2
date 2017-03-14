@@ -28,7 +28,7 @@ defmodule Jumubase.Router do
   end
 
   # Routes that require authentication
-  scope "/", Jumubase do
+  scope "/internal", Jumubase.Internal, as: :internal do
     pipe_through [:browser, :browser_auth]
 
     resources "/hosts", HostController, only: [:index, :new, :create]

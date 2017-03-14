@@ -13,4 +13,4 @@
   </tbody>
 </table>
 
-<%= link gettext("Add User"), to: user_path(@conn, :new), class: "btn btn-primary" %>
+<%= link gettext("Add User"), to: internal_user_path(@conn, :new), class: "btn btn-primary" %>

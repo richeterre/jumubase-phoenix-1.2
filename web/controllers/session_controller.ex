@@ -10,7 +10,7 @@ defmodule Jumubase.SessionController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, gettext("You are now signed in."))
-        |> redirect(to: user_path(conn, :index))
+        |> redirect(to: internal_user_path(conn, :index))
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, gettext("You could not be signed in."))

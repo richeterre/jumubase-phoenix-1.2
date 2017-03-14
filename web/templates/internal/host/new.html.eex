@@ -1,6 +1,6 @@
 <h2><%= gettext("New Host") %></h2>
 
-<%= form_for @changeset, host_path(@conn, :create), fn f -> %>
+<%= form_for @changeset, internal_host_path(@conn, :create), fn f -> %>
   <%= render Jumubase.SharedView, "form_errors.html", changeset: @changeset %>
 
   <div class="form-group">
