@@ -12,10 +12,21 @@
 
 alias Jumubase.Host
 alias Jumubase.Repo
+alias Jumubase.User
 
+# Create demo users
+admin_changeset = User.registration_changeset(%User{}, %{
+  first_name: "Anna",
+  last_name: "Admin",
+  email: "admin@example.org",
+  password: "secret",
+})
+Repo.insert!(admin_changeset)
+
+# Create demo hosts
 hosts = [
   %Host{name: "DS Helsinki", city: "Helsinki", country_code: "FI", time_zone: "Europe/Helsinki"},
   %Host{name: "DS Stockholm", city: "Stockholm", country_code: "SE", time_zone: "Europe/Stockholm"},
   %Host{name: "DS Dublin", city: "Dublin", country_code: "IE", time_zone: "Europe/Dublin"}
 ]
-hosts |> Enum.each(fn host -> Repo.insert(host) end)
+hosts |> Enum.each(fn host -> Repo.insert!(host) end)
