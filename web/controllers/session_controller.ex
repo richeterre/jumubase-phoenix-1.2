@@ -11,9 +11,9 @@ defmodule Jumubase.SessionController do
         conn
         |> put_flash(:info, gettext("You are now signed in."))
         |> redirect(to: internal_page_path(conn, :home))
-      {:error, _reason, conn} ->
+      {:error, reason, conn} ->
         conn
-        |> put_flash(:error, gettext("You could not be signed in."))
+        |> put_flash(:error, error_message(reason))
         |> render("new.html")
     end
   end
@@ -22,5 +22,16 @@ defmodule Jumubase.SessionController do
     conn
     |> Guardian.Plug.sign_out
     |> redirect(to: "/")
+  end
+
+  defp error_message(reason) do
+    case reason do
+      :unauthorized ->
+        gettext("You entered the wrong password.")
+      :not_found ->
+        gettext("We couldn't find a user with this email.")
+      _ ->
+        gettext("You could not be signed in.")
+    end
   end
 end

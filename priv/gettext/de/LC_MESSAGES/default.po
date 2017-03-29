@@ -102,7 +102,7 @@ msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
 msgid "The user \"%{email}\" was created."
 msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."
 
-#: web/templates/layout/nav.html.eex:33
+#: web/templates/layout/nav.html.eex:36
 msgid "Internal Pages"
 msgstr "Interne Seiten"
 
@@ -110,15 +110,15 @@ msgstr "Interne Seiten"
 msgid "Sign In"
 msgstr "Anmelden"
 
-#: web/templates/layout/nav.html.eex:27
+#: web/templates/layout/nav.html.eex:30
 msgid "Sign Out"
 msgstr "Abmelden"
 
-#: web/controllers/session_controller.ex:12
+#: web/controllers/session_controller.ex:13
 msgid "You are now signed in."
 msgstr "Du bist jetzt angemeldet."
 
-#: web/controllers/session_controller.ex:16
+#: web/controllers/session_controller.ex:36
 msgid "You could not be signed in."
 msgstr "Die Anmeldung ist fehlgeschlagen."
 
@@ -137,3 +137,11 @@ msgstr "Vorname"
 #: web/templates/internal/user/new.html.eex:12
 msgid "Last name"
 msgstr "Nachname"
+
+#: web/controllers/session_controller.ex:34
+msgid "We couldn't find a user with this email."
+msgstr "Wir konnten keinen Benutzer unter dieser E-Mail finden."
+
+#: web/controllers/session_controller.ex:32
+msgid "You entered the wrong password."
+msgstr "Du hast ein falsches Passwort eingegeben."

@@ -102,7 +102,7 @@ msgstr ""
 msgid "The user \"%{email}\" was created."
 msgstr ""
 
-#: web/templates/layout/nav.html.eex:33
+#: web/templates/layout/nav.html.eex:36
 msgid "Internal Pages"
 msgstr ""
 
@@ -110,15 +110,15 @@ msgstr ""
 msgid "Sign In"
 msgstr ""
 
-#: web/templates/layout/nav.html.eex:27
+#: web/templates/layout/nav.html.eex:30
 msgid "Sign Out"
 msgstr ""
 
-#: web/controllers/session_controller.ex:12
+#: web/controllers/session_controller.ex:13
 msgid "You are now signed in."
 msgstr ""
 
-#: web/controllers/session_controller.ex:16
+#: web/controllers/session_controller.ex:36
 msgid "You could not be signed in."
 msgstr ""
 
@@ -136,4 +136,12 @@ msgstr ""
 
 #: web/templates/internal/user/new.html.eex:12
 msgid "Last name"
+msgstr ""
+
+#: web/controllers/session_controller.ex:34
+msgid "We couldn't find a user with this email."
+msgstr ""
+
+#: web/controllers/session_controller.ex:32
+msgid "You entered the wrong password."
 msgstr ""
