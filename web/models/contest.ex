@@ -19,13 +19,11 @@ defmodule Jumubase.Contest do
   @optional_params [:certificate_date]
 
   def changeset(struct, params \\ %{}) do
-    rounds = Map.keys(JumuParams.get(:rounds))
-
     struct
     |> cast(params, @required_params ++ @optional_params)
     |> validate_required(@required_params)
     |> validate_number(:season, greater_than: 0)
-    |> validate_inclusion(:round, rounds)
+    |> validate_inclusion(:round, JumuParams.rounds)
     # TODO: Validate dates
   end
 end

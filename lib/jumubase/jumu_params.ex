@@ -1,5 +1,9 @@
 defmodule Jumubase.JumuParams do
-  def get(param) do
-    Application.get_env(:jumubase, :jumu_params)[param]
+
+  @doc """
+  Returns the available competition rounds.
+  """
+  def rounds do
+    1..3
   end
 end

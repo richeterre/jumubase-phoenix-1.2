@@ -23,6 +23,7 @@ msgstr "Neue Schule erstellen"
 msgid "City"
 msgstr "Stadt"
 
+#: web/templates/internal/contest/index.html.eex:6
 #: web/templates/internal/host/index.html.eex:7
 #: web/templates/internal/host/new.html.eex:17
 msgid "Country code"
@@ -40,6 +41,7 @@ msgstr "Interner Serverfehler"
 msgid "Jumu logo"
 msgstr "Jumu-Logo"
 
+#: web/templates/internal/contest/index.html.eex:5
 #: web/templates/internal/host/index.html.eex:5
 #: web/templates/internal/host/new.html.eex:7
 #: web/templates/internal/user/index.html.eex:5
@@ -114,11 +116,11 @@ msgstr "Anmelden"
 msgid "Sign Out"
 msgstr "Abmelden"
 
-#: web/controllers/session_controller.ex:13
+#: web/controllers/session_controller.ex:12
 msgid "You are now signed in."
 msgstr "Du bist jetzt angemeldet."
 
-#: web/controllers/session_controller.ex:36
+#: web/controllers/session_controller.ex:34
 msgid "You could not be signed in."
 msgstr "Die Anmeldung ist fehlgeschlagen."
 
@@ -138,10 +140,80 @@ msgstr "Vorname"
 msgid "Last name"
 msgstr "Nachname"
 
-#: web/controllers/session_controller.ex:34
+#: web/controllers/session_controller.ex:32
 msgid "We couldn't find a user with this email."
 msgstr "Wir konnten keinen Benutzer unter dieser E-Mail finden."
 
-#: web/controllers/session_controller.ex:32
+#: web/controllers/session_controller.ex:30
 msgid "You entered the wrong password."
 msgstr "Du hast ein falsches Passwort eingegeben."
+
+#: web/templates/internal/contest/index.html.eex:22
+msgid "Add Contest"
+msgstr "Neuen Wettbewerb erstellen"
+
+#: web/templates/internal/contest/new.html.eex:39
+msgid "Certificate date"
+msgstr "Urkundendatum"
+
+#: web/templates/internal/contest/index.html.eex:1
+msgid "Contests"
+msgstr "Wettbewerbe"
+
+#: web/templates/internal/contest/new.html.eex:44
+msgid "Create Contest"
+msgstr "Wettbewerb hinzufügen"
+
+#: web/views/helpers/input_helpers.ex:9
+msgid "Day"
+msgstr "Tag"
+
+#: web/templates/internal/contest/index.html.eex:7
+msgid "Duration"
+msgstr "Dauer"
+
+#: web/templates/internal/contest/new.html.eex:29
+msgid "End date"
+msgstr "Ende"
+
+#: web/templates/internal/contest/new.html.eex:18
+msgid "Host"
+msgstr "Schule"
+
+#: web/views/helpers/input_helpers.ex:8
+msgid "Month"
+msgstr "Monat"
+
+#: web/templates/internal/contest/new.html.eex:1
+msgid "New Contest"
+msgstr "Neuen Wettbewerb erstellen"
+
+#: web/templates/internal/contest/new.html.eex:13
+#: web/templates/internal/contest/new.html.eex:19
+msgid "Please choose"
+msgstr "Bitte wählen"
+
+#: web/templates/internal/contest/new.html.eex:12
+msgid "Round"
+msgstr "Runde"
+
+#: web/templates/internal/contest/new.html.eex:7
+msgid "Season"
+msgstr "Saison"
+
+#: web/templates/internal/contest/index.html.eex:8
+#: web/templates/internal/contest/new.html.eex:34
+msgid "Signup deadline"
+msgstr "Anmeldeschluss"
+
+#: web/templates/internal/contest/new.html.eex:24
+msgid "Start date"
+msgstr "Beginn"
+
+#: web/controllers/internal/contest_controller.ex:25
+msgid "The contest was created."
+msgstr "Der Wettbewerb wurde hinzugefügt."
+
+#: web/views/helpers/input_helpers.ex:7
+msgid "Year"
+msgstr "Jahr"

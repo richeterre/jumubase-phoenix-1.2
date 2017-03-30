@@ -1,0 +1,22 @@
+<h2><%= gettext("Contests") %></h2>
+
+<table class="table">
+  <thead>
+    <th><%= gettext("Name") %></th>
+    <th><%= gettext("Country code") %></th>
+    <th><%= gettext("Duration") %></th>
+    <th><%= gettext("Signup deadline") %></th>
+  </thead>
+  <tbody>
+    <%= for contest <- @contests do %>
+      <tr>
+        <td><%= name(contest) %></td>
+        <td><%= contest.host.country_code %></td>
+        <td><%= "#{contest.start_date}–#{contest.end_date}" %></td>
+        <td><%= contest.signup_deadline %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link gettext("Add Contest"), to: internal_contest_path(@conn, :new), class: "btn btn-primary" %>

@@ -32,6 +32,7 @@ defmodule Jumubase.Web do
       use Phoenix.Controller
 
       alias Jumubase.Repo
+      alias Jumubase.JumuParams
       import Ecto
       import Ecto.Query
 
@@ -50,9 +51,12 @@ defmodule Jumubase.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
+      alias Jumubase.JumuParams
       import Jumubase.Router.Helpers
       import Jumubase.AuthHelpers
       import Jumubase.ErrorHelpers
+      import Jumubase.InputHelpers
+      import Jumubase.JumuHelpers
       import Jumubase.Gettext
     end
   end
