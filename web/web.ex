@@ -20,6 +20,7 @@ defmodule Jumubase.Web do
     quote do
       use Ecto.Schema
 
+      alias Jumubase.JumuParams
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
