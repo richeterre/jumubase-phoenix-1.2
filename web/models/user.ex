@@ -1,15 +1,13 @@
 defmodule Jumubase.User do
   use Jumubase.Web, :model
 
-  alias Jumubase.Host
-
   schema "users" do
     field :first_name, :string
     field :last_name, :string
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    many_to_many :hosts, Host, join_through: "hosts_users"
+    many_to_many :hosts, Jumubase.Host, join_through: "hosts_users"
 
     timestamps()
   end

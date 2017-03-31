@@ -6,6 +6,7 @@ defmodule Jumubase.Host do
     field :city, :string
     field :country_code, :string
     field :time_zone, :string
+    has_many :contests, Jumubase.Contest, on_delete: :delete_all
 
     timestamps()
   end
