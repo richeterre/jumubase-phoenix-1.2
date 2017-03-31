@@ -7,6 +7,7 @@ defmodule Jumubase.Internal.ContestView do
 
   def name(contest) do
     round_name = short_round_name(contest.round)
-    "#{round_name} #{contest.start_date.year}, #{contest.host.name}"
+    contest_year = JumuParams.year(contest.season)
+    "#{round_name} #{contest_year}, #{contest.host.name}"
   end
 end
