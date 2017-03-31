@@ -10,9 +10,11 @@ defmodule Jumubase.Host do
     timestamps()
   end
 
+  @required_params [:name, :city, :country_code, :time_zone]
+
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :city, :country_code, :time_zone])
-    |> validate_required([:name, :city, :country_code, :time_zone])
+    |> cast(params, @required_params)
+    |> validate_required(@required_params)
   end
 end
