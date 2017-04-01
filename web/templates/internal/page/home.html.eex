@@ -1,3 +1,24 @@
 <h2>Hallo <%= current_user(@conn).first_name %>,</h2>
 
 <p>willkommen auf deinem persönlichen Jumu-Portal!</p>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= gettext("Admin") %></div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= icon_link("user", gettext("Users"), internal_user_path(@conn, :index)) %>
+        </li>
+        <li class="list-group-item">
+          <%= icon_link("globe", gettext("Hosts"), internal_host_path(@conn, :index)) %>
+        </li>
+        <li class="list-group-item">
+          <%= icon_link("music", gettext("Contests"), internal_contest_path(@conn, :index)) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

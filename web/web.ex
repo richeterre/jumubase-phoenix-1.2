@@ -57,6 +57,7 @@ defmodule Jumubase.Web do
       import Jumubase.ErrorHelpers
       import Jumubase.InputHelpers
       import Jumubase.JumuHelpers
+      import Jumubase.LinkHelpers
       import Jumubase.Gettext
     end
   end
