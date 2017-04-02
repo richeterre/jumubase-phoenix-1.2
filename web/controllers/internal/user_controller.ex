@@ -46,7 +46,11 @@ defmodule Jumubase.Internal.UserController do
     user = Repo.get!(User, id)
     |> Repo.preload(:hosts)
 
+    host_ids = user_params["host_ids"]
+    hosts = Repo.all from h in Host, where: h.id in ^host_ids
+
     changeset = User.changeset(user, user_params)
+    |> Ecto.Changeset.put_assoc(:hosts, hosts)
 
     case Repo.update(changeset) do
       {:ok, user} ->

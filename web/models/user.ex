@@ -7,7 +7,7 @@ defmodule Jumubase.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    many_to_many :hosts, Jumubase.Host, join_through: "hosts_users"
+    many_to_many :hosts, Jumubase.Host, join_through: "hosts_users", on_replace: :delete
 
     timestamps()
   end
