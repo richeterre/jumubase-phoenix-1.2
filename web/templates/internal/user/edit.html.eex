@@ -1,0 +1,7 @@
+<h2><%= gettext("Edit User") %></h2>
+
+<%= render "form.html",
+  changeset: @changeset,
+  action: internal_user_path(@conn, :update, @user),
+  has_password_field: false,
+  submit_title: gettext("Save Changes") %>

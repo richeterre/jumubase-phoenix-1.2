@@ -34,6 +34,6 @@ defmodule Jumubase.Router do
     get "/", PageController, :home
     resources "/contests", ContestController, only: [:index, :new, :create]
     resources "/hosts", HostController, only: [:index, :new, :create]
-    resources "/users", UserController, only: [:index, :new, :create]
+    resources "/users", UserController, except: [:show]
   end
 end

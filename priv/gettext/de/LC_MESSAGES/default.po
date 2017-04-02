@@ -66,24 +66,26 @@ msgid "Time zone"
 msgstr "Zeitzone"
 
 #: web/templates/internal/host/index.html.eex:1
+#: web/templates/internal/page/home.html.eex:16
 msgid "Hosts"
 msgstr "Schulen"
 
+#: web/templates/internal/user/form.html.eex:15
 #: web/templates/internal/user/index.html.eex:6
-#: web/templates/internal/user/new.html.eex:17
 #: web/templates/session/new.html.eex:5
 msgid "Email"
 msgstr "E-Mail"
 
+#: web/templates/internal/page/home.html.eex:13
 #: web/templates/internal/user/index.html.eex:1
 msgid "Users"
 msgstr "Benutzer"
 
-#: web/templates/internal/user/index.html.eex:18
+#: web/templates/internal/user/index.html.eex:26
 msgid "Add User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/internal/user/new.html.eex:26
+#: web/templates/internal/user/new.html.eex:7
 msgid "Create User"
 msgstr "Benutzer hinzufügen"
 
@@ -91,7 +93,7 @@ msgstr "Benutzer hinzufügen"
 msgid "New User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/internal/user/new.html.eex:22
+#: web/templates/internal/user/form.html.eex:22
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr "Passwort"
@@ -124,19 +126,19 @@ msgstr "Du bist jetzt angemeldet."
 msgid "You could not be signed in."
 msgstr "Die Anmeldung ist fehlgeschlagen."
 
-#: web/controllers/auth.ex:30
+#: web/controllers/auth.ex:35
 msgid "Please sign in to access this page."
 msgstr "Bitte melde dich an, um diese Seite zu besuchen."
 
-#: web/controllers/auth.ex:37
+#: web/controllers/auth.ex:42
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr "Bitte melde dich mit ausreichenden Rechten an, um diese Seite zu besuchen."
 
-#: web/templates/internal/user/new.html.eex:7
+#: web/templates/internal/user/form.html.eex:5
 msgid "First name"
 msgstr "Vorname"
 
-#: web/templates/internal/user/new.html.eex:12
+#: web/templates/internal/user/form.html.eex:10
 msgid "Last name"
 msgstr "Nachname"
 
@@ -157,6 +159,7 @@ msgid "Certificate date"
 msgstr "Urkundendatum"
 
 #: web/templates/internal/contest/index.html.eex:1
+#: web/templates/internal/page/home.html.eex:19
 msgid "Contests"
 msgstr "Wettbewerbe"
 
@@ -217,3 +220,27 @@ msgstr "Der Wettbewerb wurde hinzugefügt."
 #: web/views/helpers/input_helpers.ex:7
 msgid "Year"
 msgstr "Jahr"
+
+#: web/templates/internal/page/home.html.eex:10
+msgid "Admin"
+msgstr "Admin"
+
+#: web/templates/internal/user/index.html.eex:18
+msgid "Do you really want to delete this user?"
+msgstr "Möchtest du diesen Benutzer wirklich löschen?"
+
+#: web/controllers/internal/user_controller.ex:63
+msgid "The user \"%{email}\" was deleted."
+msgstr "Der Benutzer \"%{email}\" wurde gelöscht."
+
+#: web/controllers/internal/user_controller.ex:48
+msgid "The user \"%{email}\" was updated."
+msgstr "Der Benutzer \"%{email}\" wurde aktualisiert."
+
+#: web/templates/internal/user/edit.html.eex:1
+msgid "Edit User"
+msgstr "Benutzer bearbeiten"
+
+#: web/templates/internal/user/edit.html.eex:7
+msgid "Save Changes"
+msgstr "Änderungen speichern"

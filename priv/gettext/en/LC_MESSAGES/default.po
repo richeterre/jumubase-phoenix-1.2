@@ -66,24 +66,26 @@ msgid "Time zone"
 msgstr ""
 
 #: web/templates/internal/host/index.html.eex:1
+#: web/templates/internal/page/home.html.eex:16
 msgid "Hosts"
 msgstr ""
 
+#: web/templates/internal/user/form.html.eex:15
 #: web/templates/internal/user/index.html.eex:6
-#: web/templates/internal/user/new.html.eex:17
 #: web/templates/session/new.html.eex:5
 msgid "Email"
 msgstr ""
 
+#: web/templates/internal/page/home.html.eex:13
 #: web/templates/internal/user/index.html.eex:1
 msgid "Users"
 msgstr ""
 
-#: web/templates/internal/user/index.html.eex:18
+#: web/templates/internal/user/index.html.eex:26
 msgid "Add User"
 msgstr ""
 
-#: web/templates/internal/user/new.html.eex:26
+#: web/templates/internal/user/new.html.eex:7
 msgid "Create User"
 msgstr ""
 
@@ -91,7 +93,7 @@ msgstr ""
 msgid "New User"
 msgstr ""
 
-#: web/templates/internal/user/new.html.eex:22
+#: web/templates/internal/user/form.html.eex:22
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr ""
@@ -124,19 +126,19 @@ msgstr ""
 msgid "You could not be signed in."
 msgstr ""
 
-#: web/controllers/auth.ex:30
+#: web/controllers/auth.ex:35
 msgid "Please sign in to access this page."
 msgstr ""
 
-#: web/controllers/auth.ex:37
+#: web/controllers/auth.ex:42
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr ""
 
-#: web/templates/internal/user/new.html.eex:7
+#: web/templates/internal/user/form.html.eex:5
 msgid "First name"
 msgstr ""
 
-#: web/templates/internal/user/new.html.eex:12
+#: web/templates/internal/user/form.html.eex:10
 msgid "Last name"
 msgstr ""
 
@@ -157,6 +159,7 @@ msgid "Certificate date"
 msgstr ""
 
 #: web/templates/internal/contest/index.html.eex:1
+#: web/templates/internal/page/home.html.eex:19
 msgid "Contests"
 msgstr ""
 
@@ -216,4 +219,28 @@ msgstr ""
 
 #: web/views/helpers/input_helpers.ex:7
 msgid "Year"
+msgstr ""
+
+#: web/templates/internal/page/home.html.eex:10
+msgid "Admin"
+msgstr ""
+
+#: web/templates/internal/user/index.html.eex:18
+msgid "Do you really want to delete this user?"
+msgstr ""
+
+#: web/controllers/internal/user_controller.ex:63
+msgid "The user \"%{email}\" was deleted."
+msgstr ""
+
+#: web/controllers/internal/user_controller.ex:48
+msgid "The user \"%{email}\" was updated."
+msgstr ""
+
+#: web/templates/internal/user/edit.html.eex:1
+msgid "Edit User"
+msgstr ""
+
+#: web/templates/internal/user/edit.html.eex:7
+msgid "Save Changes"
 msgstr ""
