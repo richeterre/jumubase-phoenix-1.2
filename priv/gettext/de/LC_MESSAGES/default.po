@@ -67,6 +67,7 @@ msgstr "Zeitzone"
 
 #: web/templates/internal/host/index.html.eex:1
 #: web/templates/internal/page/home.html.eex:16
+#: web/templates/internal/user/form.html.eex:21
 msgid "Hosts"
 msgstr "Schulen"
 
@@ -85,7 +86,7 @@ msgstr "Benutzer"
 msgid "Add User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/internal/user/new.html.eex:7
+#: web/templates/internal/user/new.html.eex:8
 msgid "Create User"
 msgstr "Benutzer hinzufügen"
 
@@ -93,7 +94,7 @@ msgstr "Benutzer hinzufügen"
 msgid "New User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/internal/user/form.html.eex:22
+#: web/templates/internal/user/form.html.eex:30
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr "Passwort"
@@ -102,7 +103,7 @@ msgstr "Passwort"
 msgid "The host \"%{name}\" was created."
 msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
 
-#: web/controllers/internal/user_controller.ex:23
+#: web/controllers/internal/user_controller.ex:26
 msgid "The user \"%{email}\" was created."
 msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."
 
@@ -229,11 +230,11 @@ msgstr "Admin"
 msgid "Do you really want to delete this user?"
 msgstr "Möchtest du diesen Benutzer wirklich löschen?"
 
-#: web/controllers/internal/user_controller.ex:63
+#: web/controllers/internal/user_controller.ex:69
 msgid "The user \"%{email}\" was deleted."
 msgstr "Der Benutzer \"%{email}\" wurde gelöscht."
 
-#: web/controllers/internal/user_controller.ex:48
+#: web/controllers/internal/user_controller.ex:53
 msgid "The user \"%{email}\" was updated."
 msgstr "Der Benutzer \"%{email}\" wurde aktualisiert."
 
@@ -241,6 +242,6 @@ msgstr "Der Benutzer \"%{email}\" wurde aktualisiert."
 msgid "Edit User"
 msgstr "Benutzer bearbeiten"
 
-#: web/templates/internal/user/edit.html.eex:7
+#: web/templates/internal/user/edit.html.eex:8
 msgid "Save Changes"
 msgstr "Änderungen speichern"

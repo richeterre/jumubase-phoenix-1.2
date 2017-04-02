@@ -1,6 +1,7 @@
 defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
   alias Jumubase.User
+  alias Jumubase.Host
 
   def index(conn, _params) do
     conn
@@ -9,8 +10,10 @@ defmodule Jumubase.Internal.UserController do
   end
 
   def new(conn, _params) do
+    user = %User{hosts: []}
+
     conn
-    |> assign(:changeset, User.changeset(%User{}))
+    |> prepare_for_form(User.changeset(user))
     |> render("new.html")
   end
 
@@ -31,14 +34,18 @@ defmodule Jumubase.Internal.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
+    |> Repo.preload(:hosts)
+
     conn
-    |> assign(:changeset, User.changeset(user))
     |> assign(:user, user)
+    |> prepare_for_form(User.changeset(user))
     |> render("edit.html")
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
     user = Repo.get!(User, id)
+    |> Repo.preload(:hosts)
+
     changeset = User.changeset(user, user_params)
 
     case Repo.update(changeset) do
@@ -49,7 +56,8 @@ defmodule Jumubase.Internal.UserController do
         |> redirect(to: internal_user_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> assign(:changeset, changeset)
+        |> assign(:user, user)
+        |> prepare_for_form(changeset)
         |> render("edit.html")
     end
   end
@@ -62,5 +70,12 @@ defmodule Jumubase.Internal.UserController do
     |> put_flash(:info,
       gettext("The user \"%{email}\" was deleted.", email: user.email))
     |> redirect(to: internal_user_path(conn, :index))
+  end
+
+  defp prepare_for_form(conn, changeset) do
+    host_query = from(h in Host, select: {h.name, h.id})
+    conn
+    |> assign(:changeset, changeset)
+    |> assign(:host_ids, Repo.all(host_query))
   end
 end

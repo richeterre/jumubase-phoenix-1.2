@@ -67,6 +67,7 @@ msgstr ""
 
 #: web/templates/internal/host/index.html.eex:1
 #: web/templates/internal/page/home.html.eex:16
+#: web/templates/internal/user/form.html.eex:21
 msgid "Hosts"
 msgstr ""
 
@@ -85,7 +86,7 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: web/templates/internal/user/new.html.eex:7
+#: web/templates/internal/user/new.html.eex:8
 msgid "Create User"
 msgstr ""
 
@@ -93,7 +94,7 @@ msgstr ""
 msgid "New User"
 msgstr ""
 
-#: web/templates/internal/user/form.html.eex:22
+#: web/templates/internal/user/form.html.eex:30
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr ""
@@ -102,7 +103,7 @@ msgstr ""
 msgid "The host \"%{name}\" was created."
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:23
+#: web/controllers/internal/user_controller.ex:26
 msgid "The user \"%{email}\" was created."
 msgstr ""
 
@@ -229,11 +230,11 @@ msgstr ""
 msgid "Do you really want to delete this user?"
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:63
+#: web/controllers/internal/user_controller.ex:69
 msgid "The user \"%{email}\" was deleted."
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:48
+#: web/controllers/internal/user_controller.ex:53
 msgid "The user \"%{email}\" was updated."
 msgstr ""
 
@@ -241,6 +242,6 @@ msgstr ""
 msgid "Edit User"
 msgstr ""
 
-#: web/templates/internal/user/edit.html.eex:7
+#: web/templates/internal/user/edit.html.eex:8
 msgid "Save Changes"
 msgstr ""
