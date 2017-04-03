@@ -18,7 +18,8 @@ defmodule Jumubase.Internal.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    changeset = User.registration_changeset(%User{}, user_params)
+    changeset = %User{hosts: []}
+    |> User.registration_changeset(user_params)
     |> put_hosts_assoc(user_params)
 
     case Repo.insert(changeset) do
@@ -29,7 +30,7 @@ defmodule Jumubase.Internal.UserController do
         |> redirect(to: internal_user_path(conn, :index))
       {:error, changeset} ->
         conn
-        |> assign(:changeset, changeset)
+        |> prepare_for_form(changeset)
         |> render("new.html")
     end
   end
