@@ -15,6 +15,13 @@ defmodule Jumubase.Internal.UserView do
     Enum.map(JumuParams.roles(), &({role_name(&1), &1}))
   end
 
+  @doc """
+  Returns a label text describing the user's special role.
+  """
+  def role_label(user) do
+    if user.role !== "rw-organizer", do: role_name(user.role)
+  end
+
   defp role_name(role) do
     case role do
       "admin" -> gettext("Admin")

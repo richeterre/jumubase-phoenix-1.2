@@ -9,7 +9,10 @@
   <tbody>
     <%= for user <- @users do %>
       <tr>
-        <td><%= "#{user.first_name} #{user.last_name}" %></td>
+        <td>
+          <%= "#{user.first_name} #{user.last_name}" %>
+          <%= role_label_tag(role_label(user), user.role) %>
+        </td>
         <td><%= user.email %></td>
         <td>
           <%= icon_link("pencil", nil, internal_user_path(@conn, :edit, user),
