@@ -1,6 +1,11 @@
 defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
   import Jumubase.Internal.UserView, only: [full_name: 1]
+  alias Jumubase.Endpoint
+
+  plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
+  plug :add_breadcrumb, name: gettext("Users"), url: internal_user_path(Endpoint, :index)
+
   alias Jumubase.User
   alias Jumubase.Host
 
@@ -15,6 +20,7 @@ defmodule Jumubase.Internal.UserController do
 
     conn
     |> prepare_for_form(User.changeset(user))
+    |> add_breadcrumb(icon: "plus", url: internal_user_path(Endpoint, :new))
     |> render("new.html")
   end
 
@@ -43,6 +49,8 @@ defmodule Jumubase.Internal.UserController do
     conn
     |> assign(:user, user)
     |> prepare_for_form(User.changeset(user))
+    |> add_breadcrumb(name: full_name(user))
+    |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
     |> render("edit.html")
   end
 

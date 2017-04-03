@@ -1,7 +1,12 @@
 defmodule Jumubase.Internal.ContestController do
   use Jumubase.Web, :controller
+
+  alias Jumubase.Endpoint
   alias Jumubase.Contest
   alias Jumubase.Host
+
+  plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
+  plug :add_breadcrumb, name: gettext("Contests"), url: internal_contest_path(Endpoint, :index)
 
   def index(conn, _params) do
     contests = Repo.all from c in Contest, preload: [:host]
@@ -14,6 +19,7 @@ defmodule Jumubase.Internal.ContestController do
   def new(conn, _params) do
     conn
     |> prepare_for_form(Contest.changeset(%Contest{}))
+    |> add_breadcrumb(icon: "plus", url: internal_contest_path(Endpoint, :new))
     |> render("new.html")
   end
 

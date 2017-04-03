@@ -1,6 +1,10 @@
 defmodule Jumubase.Internal.HostController do
   use Jumubase.Web, :controller
+  alias Jumubase.Endpoint
   alias Jumubase.Host
+
+  plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
+  plug :add_breadcrumb, name: gettext("Hosts"), url: internal_host_path(Endpoint, :index)
 
   def index(conn, _params) do
     conn
@@ -11,6 +15,7 @@ defmodule Jumubase.Internal.HostController do
   def new(conn, _params) do
     conn
     |> assign(:changeset, Host.changeset(%Host{}))
+    |> add_breadcrumb(icon: "plus", url: internal_host_path(Endpoint, :new))
     |> render("new.html")
   end
 

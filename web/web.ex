@@ -38,6 +38,7 @@ defmodule Jumubase.Web do
 
       import Jumubase.Router.Helpers
       import Jumubase.Gettext
+      import Jumubase.Breadcrumbs
     end
   end
 
@@ -55,9 +56,9 @@ defmodule Jumubase.Web do
       import Jumubase.Router.Helpers
       import Jumubase.AuthHelpers
       import Jumubase.ErrorHelpers
+      import Jumubase.IconHelpers
       import Jumubase.InputHelpers
       import Jumubase.JumuHelpers
-      import Jumubase.LinkHelpers
       import Jumubase.Gettext
     end
   end
