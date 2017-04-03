@@ -18,13 +18,13 @@
         <%= render "nav.html", conn: @conn %>
       </header>
 
+      <%= if assigns[:breadcrumbs], do: render "breadcrumbs.html",
+        conn: @conn, breadcrumbs: @breadcrumbs %>
+
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-success" role="alert"><%= get_flash(@conn, :success) %></p>
       <p class="alert alert-warning" role="alert"><%= get_flash(@conn, :warning) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-      <%= if assigns[:breadcrumbs], do: render "breadcrumbs.html",
-        conn: @conn, breadcrumbs: @breadcrumbs %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
