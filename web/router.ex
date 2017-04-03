@@ -9,6 +9,7 @@ defmodule Jumubase.Router do
     plug :put_secure_browser_headers
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
+    plug Jumubase.Plug.CurrentUser
   end
 
   pipeline :browser_auth do

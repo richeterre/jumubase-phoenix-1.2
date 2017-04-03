@@ -1,4 +1,4 @@
-<h2>Hallo <%= current_user(@conn).first_name %>,</h2>
+<h2>Hallo <%= @current_user.first_name %>,</h2>
 
 <p>willkommen auf deinem persönlichen Jumu-Portal!</p>
 

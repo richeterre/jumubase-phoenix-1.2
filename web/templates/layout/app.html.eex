@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <header class="header">
-        <%= render "nav.html", conn: @conn %>
+        <%= render "nav.html", conn: @conn, current_user: @current_user %>
       </header>
 
       <%= if assigns[:breadcrumbs], do: render "breadcrumbs.html",

@@ -1,7 +1,6 @@
 defmodule Jumubase.AuthHelpers do
   use Phoenix.HTML
 
-  def current_user(conn), do: Guardian.Plug.current_resource(conn)
   def signed_in?(conn), do: Guardian.Plug.authenticated?(conn)
 
   @doc """

@@ -29,12 +29,6 @@ defmodule Jumubase.Auth do
     |> put_flash(:warning,
       gettext("Please sign in to access this page."))
     |> redirect(to: session_path(conn, :new))
-  end
-
-  def unauthorized(conn, _params) do
-    conn
-    |> put_flash(:error,
-      gettext("Please sign in with sufficient permissions to access this page."))
-    |> redirect(to: page_path(conn, :home))
+    |> halt()
   end
 end
