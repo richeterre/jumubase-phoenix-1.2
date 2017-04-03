@@ -67,7 +67,7 @@ msgstr "Zeitzone"
 
 #: web/templates/internal/host/index.html.eex:1
 #: web/templates/internal/page/home.html.eex:16
-#: web/templates/internal/user/form.html.eex:21
+#: web/templates/internal/user/form.html.eex:36
 msgid "Hosts"
 msgstr "Schulen"
 
@@ -94,7 +94,7 @@ msgstr "Benutzer hinzufügen"
 msgid "New User"
 msgstr "Neuen Benutzer erstellen"
 
-#: web/templates/internal/user/form.html.eex:30
+#: web/templates/internal/user/form.html.eex:22
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr "Passwort"
@@ -127,11 +127,11 @@ msgstr "Du bist jetzt angemeldet."
 msgid "You could not be signed in."
 msgstr "Die Anmeldung ist fehlgeschlagen."
 
-#: web/controllers/auth.ex:35
+#: web/controllers/auth.ex:30
 msgid "Please sign in to access this page."
 msgstr "Bitte melde dich an, um diese Seite zu besuchen."
 
-#: web/controllers/auth.ex:42
+#: web/controllers/auth.ex:37
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr "Bitte melde dich mit ausreichenden Rechten an, um diese Seite zu besuchen."
 
@@ -194,6 +194,7 @@ msgstr "Neuen Wettbewerb erstellen"
 
 #: web/templates/internal/contest/new.html.eex:13
 #: web/templates/internal/contest/new.html.eex:19
+#: web/templates/internal/user/form.html.eex:30
 msgid "Please choose"
 msgstr "Bitte wählen"
 
@@ -223,6 +224,7 @@ msgid "Year"
 msgstr "Jahr"
 
 #: web/templates/internal/page/home.html.eex:10
+#: web/views/internal/user_view.ex:10
 msgid "Admin"
 msgstr "Admin"
 
@@ -230,11 +232,11 @@ msgstr "Admin"
 msgid "Do you really want to delete this user?"
 msgstr "Möchtest du diesen Benutzer wirklich löschen?"
 
-#: web/controllers/internal/user_controller.ex:69
+#: web/controllers/internal/user_controller.ex:75
 msgid "The user \"%{email}\" was deleted."
 msgstr "Der Benutzer \"%{email}\" wurde gelöscht."
 
-#: web/controllers/internal/user_controller.ex:53
+#: web/controllers/internal/user_controller.ex:59
 msgid "The user \"%{email}\" was updated."
 msgstr "Der Benutzer \"%{email}\" wurde aktualisiert."
 
@@ -245,3 +247,19 @@ msgstr "Benutzer bearbeiten"
 #: web/templates/internal/user/edit.html.eex:8
 msgid "Save Changes"
 msgstr "Änderungen speichern"
+
+#: web/views/internal/user_view.ex:11
+msgid "Inspector"
+msgstr "Inspektion"
+
+#: web/views/internal/user_view.ex:12
+msgid "LW Organizer"
+msgstr "LW-Organisation"
+
+#: web/views/internal/user_view.ex:13
+msgid "RW Organizer"
+msgstr "RW-Organisation"
+
+#: web/templates/internal/user/form.html.eex:29
+msgid "Role"
+msgstr "Rolle"

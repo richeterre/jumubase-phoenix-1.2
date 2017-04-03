@@ -67,7 +67,7 @@ msgstr ""
 
 #: web/templates/internal/host/index.html.eex:1
 #: web/templates/internal/page/home.html.eex:16
-#: web/templates/internal/user/form.html.eex:21
+#: web/templates/internal/user/form.html.eex:36
 msgid "Hosts"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "New User"
 msgstr ""
 
-#: web/templates/internal/user/form.html.eex:30
+#: web/templates/internal/user/form.html.eex:22
 #: web/templates/session/new.html.eex:9
 msgid "Password"
 msgstr ""
@@ -127,11 +127,11 @@ msgstr ""
 msgid "You could not be signed in."
 msgstr ""
 
-#: web/controllers/auth.ex:35
+#: web/controllers/auth.ex:30
 msgid "Please sign in to access this page."
 msgstr ""
 
-#: web/controllers/auth.ex:42
+#: web/controllers/auth.ex:37
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr ""
 
@@ -194,6 +194,7 @@ msgstr ""
 
 #: web/templates/internal/contest/new.html.eex:13
 #: web/templates/internal/contest/new.html.eex:19
+#: web/templates/internal/user/form.html.eex:30
 msgid "Please choose"
 msgstr ""
 
@@ -223,6 +224,7 @@ msgid "Year"
 msgstr ""
 
 #: web/templates/internal/page/home.html.eex:10
+#: web/views/internal/user_view.ex:10
 msgid "Admin"
 msgstr ""
 
@@ -230,11 +232,11 @@ msgstr ""
 msgid "Do you really want to delete this user?"
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:69
+#: web/controllers/internal/user_controller.ex:75
 msgid "The user \"%{email}\" was deleted."
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:53
+#: web/controllers/internal/user_controller.ex:59
 msgid "The user \"%{email}\" was updated."
 msgstr ""
 
@@ -244,4 +246,20 @@ msgstr ""
 
 #: web/templates/internal/user/edit.html.eex:8
 msgid "Save Changes"
+msgstr ""
+
+#: web/views/internal/user_view.ex:11
+msgid "Inspector"
+msgstr ""
+
+#: web/views/internal/user_view.ex:12
+msgid "LW Organizer"
+msgstr ""
+
+#: web/views/internal/user_view.ex:13
+msgid "RW Organizer"
+msgstr ""
+
+#: web/templates/internal/user/form.html.eex:29
+msgid "Role"
 msgstr ""

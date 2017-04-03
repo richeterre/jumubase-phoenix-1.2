@@ -26,6 +26,13 @@
   <% end %>
 
   <div class="form-group">
+    <%= label f, :role, gettext("Role") %>
+    <%= select f, :role, roles(), prompt: gettext("Please choose"),
+      class: "form-control" %>
+    <%= error_tag f, :role %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :host_ids, gettext("Hosts") %>
     <%= multiple_select f, :host_ids, @host_ids,
       selected: Enum.map(@changeset.data.hosts, &(&1.id)),

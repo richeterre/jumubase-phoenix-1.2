@@ -24,6 +24,7 @@ Repo.transaction fn ->
     last_name: "Admin",
     email: "admin@example.org",
     password: "secret",
+    role: "admin"
   })
   Repo.insert!(admin_changeset)
 
