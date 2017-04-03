@@ -28,6 +28,33 @@ Repo.transaction fn ->
   })
   Repo.insert!(admin_changeset)
 
+  lw_organizer_changeset = User.registration_changeset(%User{}, %{
+    first_name: "Lukas",
+    last_name: "Landeswetter",
+    email: "lw-org@example.org",
+    password: "secret",
+    role: "lw-organizer"
+  })
+  Repo.insert!(lw_organizer_changeset)
+
+  rw_organizer_changeset = User.registration_changeset(%User{}, %{
+    first_name: "Rieke",
+    last_name: "Regionalwetter",
+    email: "rw-org@example.org",
+    password: "secret",
+    role: "rw-organizer"
+  })
+  Repo.insert!(rw_organizer_changeset)
+
+  inspector_changeset = User.registration_changeset(%User{}, %{
+    first_name: "Ivo",
+    last_name: "Inspektor",
+    email: "inspektor@example.org",
+    password: "secret",
+    role: "inspector"
+  })
+  Repo.insert!(inspector_changeset)
+
   # Create demo hosts
 
   host1 = Repo.insert!(%Host{name: "DS Helsinki", city: "Helsinki", country_code: "FI", time_zone: "Europe/Helsinki"})
