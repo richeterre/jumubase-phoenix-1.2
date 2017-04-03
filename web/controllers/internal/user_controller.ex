@@ -19,6 +19,8 @@ defmodule Jumubase.Internal.UserController do
 
   def create(conn, %{"user" => user_params}) do
     changeset = User.registration_changeset(%User{}, user_params)
+    |> put_hosts_assoc(user_params)
+
     case Repo.insert(changeset) do
       {:ok, user} ->
         conn
@@ -46,11 +48,8 @@ defmodule Jumubase.Internal.UserController do
     user = Repo.get!(User, id)
     |> Repo.preload(:hosts)
 
-    host_ids = user_params["host_ids"] || []
-    hosts = Repo.all from h in Host, where: h.id in ^host_ids
-
     changeset = User.changeset(user, user_params)
-    |> Ecto.Changeset.put_assoc(:hosts, hosts)
+    |> put_hosts_assoc(user_params)
 
     case Repo.update(changeset) do
       {:ok, user} ->
@@ -81,5 +80,12 @@ defmodule Jumubase.Internal.UserController do
     conn
     |> assign(:changeset, changeset)
     |> assign(:host_ids, Repo.all(host_query))
+  end
+
+  defp put_hosts_assoc(changeset, user_params) do
+    host_ids = user_params["host_ids"] || []
+    hosts = Repo.all from h in Host, where: h.id in ^host_ids
+
+    changeset |> Ecto.Changeset.put_assoc(:hosts, hosts)
   end
 end
