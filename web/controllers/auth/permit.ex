@@ -4,6 +4,7 @@ defmodule Jumubase.Permit do
 
   def authorize(_, _, %User{role: "admin"}), do: :ok
   def authorize(Host, _, %User{}), do: {:error, :unauthorized}
+  def authorize(User, _, %User{}), do: {:error, :unauthorized}
 
   def unauthorized(conn) do
     conn

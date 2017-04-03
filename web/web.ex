@@ -33,6 +33,7 @@ defmodule Jumubase.Web do
 
       alias Jumubase.Repo
       alias Jumubase.JumuParams
+      alias Jumubase.Permit
       import Ecto
       import Ecto.Query
 

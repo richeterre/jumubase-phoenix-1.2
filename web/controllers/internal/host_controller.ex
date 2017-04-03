@@ -1,6 +1,6 @@
 defmodule Jumubase.Internal.HostController do
   use Jumubase.Web, :controller
-  alias Jumubase.{Endpoint, Host, Permit}
+  alias Jumubase.{Endpoint, Host}
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Hosts"), url: internal_host_path(Endpoint, :index)
@@ -17,8 +17,7 @@ defmodule Jumubase.Internal.HostController do
           |> assign(:hosts, Repo.all(from h in Host, order_by: h.name))
           |> render("index.html")
       {:error, :unauthorized} ->
-        conn
-          |> Permit.unauthorized()
+        conn |> Permit.unauthorized()
     end
   end
 
@@ -30,8 +29,7 @@ defmodule Jumubase.Internal.HostController do
         |> add_breadcrumb(icon: "plus", url: internal_host_path(Endpoint, :new))
         |> render("new.html")
       {:error, :unauthorized} ->
-        conn
-        |> Permit.unauthorized()
+        conn |> Permit.unauthorized()
     end
   end
 

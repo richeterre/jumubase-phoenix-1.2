@@ -1,40 +1,55 @@
 defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
   import Jumubase.Internal.UserView, only: [full_name: 1]
-  alias Jumubase.Endpoint
+  alias Jumubase.{Endpoint, Host, User}
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Users"), url: internal_user_path(Endpoint, :index)
 
-  alias Jumubase.User
-  alias Jumubase.Host
-
-  def index(conn, _params) do
-    conn
-    |> assign(:users, Repo.all(User))
-    |> render("index.html")
+  def action(conn, _) do
+    # Pass current user as param to all actions
+    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
 
-  def new(conn, _params) do
-    user = %User{hosts: []}
-
-    conn
-    |> prepare_for_form(User.changeset(user))
-    |> add_breadcrumb(icon: "plus", url: internal_user_path(Endpoint, :new))
-    |> render("new.html")
+  def index(conn, _params, current_user) do
+    case Permit.authorize(User, :index, current_user) do
+      :ok ->
+        conn
+        |> assign(:users, Repo.all(User))
+        |> render("index.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
   end
 
-  def create(conn, %{"user" => user_params}) do
+  def new(conn, _params, current_user) do
+    case Permit.authorize(User, :new, current_user) do
+      :ok ->
+        user = %User{hosts: []}
+        conn
+        |> prepare_for_form(User.changeset(user))
+        |> add_breadcrumb(icon: "plus", url: internal_user_path(Endpoint, :new))
+        |> render("new.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
+  end
+
+  def create(conn, %{"user" => user_params}, current_user) do
     changeset = %User{hosts: []}
     |> User.registration_changeset(user_params)
     |> put_hosts_assoc(user_params)
 
-    case Repo.insert(changeset) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:success,
-          gettext("The user %{name} was created.", name: full_name(user)))
-        |> redirect(to: internal_user_path(conn, :index))
+    with :ok <- Permit.authorize(User, :create, current_user),
+      {:ok, user} <- Repo.insert(changeset)
+    do
+      conn
+      |> put_flash(:success,
+        gettext("The user %{name} was created.", name: full_name(user)))
+      |> redirect(to: internal_user_path(conn, :index))
+    else
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
       {:error, changeset} ->
         conn
         |> prepare_for_form(changeset)
@@ -42,31 +57,39 @@ defmodule Jumubase.Internal.UserController do
     end
   end
 
-  def edit(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    |> Repo.preload(:hosts)
-
-    conn
-    |> assign(:user, user)
-    |> prepare_for_form(User.changeset(user))
-    |> add_breadcrumb(name: full_name(user))
-    |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
-    |> render("edit.html")
+  def edit(conn, %{"id" => id}, current_user) do
+    case Permit.authorize(User, :edit, current_user) do
+      :ok ->
+        user = Repo.get!(User, id)
+        |> Repo.preload(:hosts)
+        conn
+        |> assign(:user, user)
+        |> prepare_for_form(User.changeset(user))
+        |> add_breadcrumb(name: full_name(user))
+        |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
+        |> render("edit.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
   end
 
-  def update(conn, %{"id" => id, "user" => user_params}) do
+  def update(conn, %{"id" => id, "user" => user_params}, current_user) do
     user = Repo.get!(User, id)
     |> Repo.preload(:hosts)
 
     changeset = User.changeset(user, user_params)
     |> put_hosts_assoc(user_params)
 
-    case Repo.update(changeset) do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info,
-          gettext("The user %{name} was updated.", name: full_name(user)))
-        |> redirect(to: internal_user_path(conn, :index))
+    with :ok <- Permit.authorize(User, :update, current_user),
+      {:ok, user} <- Repo.update(changeset)
+    do
+      conn
+      |> put_flash(:info,
+        gettext("The user %{name} was updated.", name: full_name(user)))
+      |> redirect(to: internal_user_path(conn, :index))
+    else
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
       {:error, changeset} ->
         conn
         |> assign(:user, user)
@@ -75,14 +98,18 @@ defmodule Jumubase.Internal.UserController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    Repo.delete!(user)
-
-    conn
-    |> put_flash(:info,
-      gettext("The user %{name} was deleted.", name: full_name(user)))
-    |> redirect(to: internal_user_path(conn, :index))
+  def delete(conn, %{"id" => id}, current_user) do
+    case Permit.authorize(User, :delete, current_user) do
+      :ok ->
+        user = Repo.get!(User, id)
+        |> Repo.delete!
+        conn
+        |> put_flash(:info,
+          gettext("The user %{name} was deleted.", name: full_name(user)))
+        |> redirect(to: internal_user_path(conn, :index))
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
   end
 
   defp prepare_for_form(conn, changeset) do
