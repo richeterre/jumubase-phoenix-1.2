@@ -77,6 +77,7 @@ msgstr "Schulen"
 msgid "Email"
 msgstr "E-Mail"
 
+#: web/controllers/internal/user_controller.ex:7
 #: web/templates/internal/page/home.html.eex:13
 #: web/templates/internal/user/index.html.eex:1
 msgid "Users"
@@ -102,10 +103,6 @@ msgstr "Passwort"
 #: web/controllers/internal/host_controller.ex:23
 msgid "The host \"%{name}\" was created."
 msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
-
-#: web/controllers/internal/user_controller.ex:26
-msgid "The user \"%{email}\" was created."
-msgstr "Der Benutzer \"%{email}\" wurde hinzugefügt."
 
 #: web/templates/layout/nav.html.eex:36
 msgid "Internal Pages"
@@ -224,21 +221,13 @@ msgid "Year"
 msgstr "Jahr"
 
 #: web/templates/internal/page/home.html.eex:10
-#: web/views/internal/user_view.ex:10
+#: web/views/internal/user_view.ex:20
 msgid "Admin"
 msgstr "Admin"
 
 #: web/templates/internal/user/index.html.eex:18
 msgid "Do you really want to delete this user?"
 msgstr "Möchtest du diesen Benutzer wirklich löschen?"
-
-#: web/controllers/internal/user_controller.ex:75
-msgid "The user \"%{email}\" was deleted."
-msgstr "Der Benutzer \"%{email}\" wurde gelöscht."
-
-#: web/controllers/internal/user_controller.ex:59
-msgid "The user \"%{email}\" was updated."
-msgstr "Der Benutzer \"%{email}\" wurde aktualisiert."
 
 #: web/templates/internal/user/edit.html.eex:1
 msgid "Edit User"
@@ -248,18 +237,33 @@ msgstr "Benutzer bearbeiten"
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: web/views/internal/user_view.ex:11
+#: web/views/internal/user_view.ex:21
 msgid "Inspector"
 msgstr "Inspektion"
 
-#: web/views/internal/user_view.ex:12
+#: web/views/internal/user_view.ex:22
 msgid "LW Organizer"
 msgstr "LW-Organisation"
 
-#: web/views/internal/user_view.ex:13
+#: web/views/internal/user_view.ex:23
 msgid "RW Organizer"
 msgstr "RW-Organisation"
 
 #: web/templates/internal/user/form.html.eex:29
 msgid "Role"
 msgstr "Rolle"
+
+#, fuzzy
+#: web/controllers/internal/user_controller.ex:36
+msgid "The user %{name} was created."
+msgstr "Der Benutzer %{name} wurde hinzugefügt."
+
+#, fuzzy
+#: web/controllers/internal/user_controller.ex:84
+msgid "The user %{name} was deleted."
+msgstr "Der Benutzer %{name} wurde gelöscht."
+
+#, fuzzy
+#: web/controllers/internal/user_controller.ex:68
+msgid "The user %{name} was updated."
+msgstr "Der Benutzer %{name} wurde aktualisiert."

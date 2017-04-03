@@ -27,7 +27,7 @@
 
   <div class="form-group">
     <%= label f, :role, gettext("Role") %>
-    <%= select f, :role, roles(), prompt: gettext("Please choose"),
+    <%= select f, :role, form_roles(), prompt: gettext("Please choose"),
       class: "form-control" %>
     <%= error_tag f, :role %>
   </div>

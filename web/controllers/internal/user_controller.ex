@@ -1,5 +1,6 @@
 defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
+  import Jumubase.Internal.UserView, only: [full_name: 1]
   alias Jumubase.User
   alias Jumubase.Host
 
@@ -26,7 +27,7 @@ defmodule Jumubase.Internal.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:success,
-          gettext("The user \"%{email}\" was created.", email: user.email))
+          gettext("The user %{name} was created.", name: full_name(user)))
         |> redirect(to: internal_user_path(conn, :index))
       {:error, changeset} ->
         conn
@@ -56,7 +57,7 @@ defmodule Jumubase.Internal.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info,
-          gettext("The user \"%{email}\" was updated.", email: user.email))
+          gettext("The user %{name} was updated.", name: full_name(user)))
         |> redirect(to: internal_user_path(conn, :index))
       {:error, changeset} ->
         conn
@@ -72,7 +73,7 @@ defmodule Jumubase.Internal.UserController do
 
     conn
     |> put_flash(:info,
-      gettext("The user \"%{email}\" was deleted.", email: user.email))
+      gettext("The user %{name} was deleted.", name: full_name(user)))
     |> redirect(to: internal_user_path(conn, :index))
   end
 
