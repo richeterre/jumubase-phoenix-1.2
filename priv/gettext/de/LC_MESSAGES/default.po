@@ -14,17 +14,17 @@ msgstr ""
 msgid "Home"
 msgstr "Startseite"
 
-#: web/templates/internal/host/index.html.eex:22
+#: web/templates/internal/host/index.html.eex:25
 msgid "Add Host"
 msgstr "Neue Schule erstellen"
 
-#: web/templates/internal/host/index.html.eex:6
+#: web/templates/internal/host/index.html.eex:8
 #: web/templates/internal/host/new.html.eex:12
 msgid "City"
 msgstr "Stadt"
 
-#: web/templates/internal/contest/index.html.eex:6
-#: web/templates/internal/host/index.html.eex:7
+#: web/templates/internal/contest/index.html.eex:7
+#: web/templates/internal/host/index.html.eex:9
 #: web/templates/internal/host/new.html.eex:17
 msgid "Country code"
 msgstr "Ländercode"
@@ -41,10 +41,10 @@ msgstr "Interner Serverfehler"
 msgid "Jumu logo"
 msgstr "Jumu-Logo"
 
-#: web/templates/internal/contest/index.html.eex:5
-#: web/templates/internal/host/index.html.eex:5
+#: web/templates/internal/contest/index.html.eex:6
+#: web/templates/internal/host/index.html.eex:7
 #: web/templates/internal/host/new.html.eex:7
-#: web/templates/internal/user/index.html.eex:5
+#: web/templates/internal/user/index.html.eex:6
 msgid "Name"
 msgstr "Name"
 
@@ -60,30 +60,31 @@ msgstr "Seite nicht gefunden"
 msgid "Please fix the errors below before submitting."
 msgstr "Bitte korrigiere zunächst die untenstehenden Fehler."
 
-#: web/templates/internal/host/index.html.eex:8
+#: web/templates/internal/host/index.html.eex:10
 #: web/templates/internal/host/new.html.eex:22
 msgid "Time zone"
 msgstr "Zeitzone"
 
+#: web/controllers/internal/host_controller.ex:6
 #: web/templates/internal/host/index.html.eex:1
-#: web/templates/internal/page/home.html.eex:16
+#: web/templates/internal/page/home.html.eex:18
 #: web/templates/internal/user/form.html.eex:36
 msgid "Hosts"
 msgstr "Schulen"
 
 #: web/templates/internal/user/form.html.eex:15
-#: web/templates/internal/user/index.html.eex:6
+#: web/templates/internal/user/index.html.eex:7
 #: web/templates/session/new.html.eex:5
 msgid "Email"
 msgstr "E-Mail"
 
 #: web/controllers/internal/user_controller.ex:7
-#: web/templates/internal/page/home.html.eex:13
+#: web/templates/internal/page/home.html.eex:15
 #: web/templates/internal/user/index.html.eex:1
 msgid "Users"
 msgstr "Benutzer"
 
-#: web/templates/internal/user/index.html.eex:26
+#: web/templates/internal/user/index.html.eex:31
 msgid "Add User"
 msgstr "Neuen Benutzer erstellen"
 
@@ -100,7 +101,7 @@ msgstr "Neuen Benutzer erstellen"
 msgid "Password"
 msgstr "Passwort"
 
-#: web/controllers/internal/host_controller.ex:23
+#: web/controllers/internal/host_controller.ex:43
 msgid "The host \"%{name}\" was created."
 msgstr "Die Schule \"%{name}\" wurde hinzugefügt."
 
@@ -116,19 +117,19 @@ msgstr "Anmelden"
 msgid "Sign Out"
 msgstr "Abmelden"
 
-#: web/controllers/session_controller.ex:12
+#: web/controllers/session_controller.ex:13
 msgid "You are now signed in."
 msgstr "Du bist jetzt angemeldet."
 
-#: web/controllers/session_controller.ex:34
+#: web/controllers/session_controller.ex:33
 msgid "You could not be signed in."
 msgstr "Die Anmeldung ist fehlgeschlagen."
 
-#: web/controllers/auth.ex:30
+#: web/controllers/auth/auth.ex:37
 msgid "Please sign in to access this page."
 msgstr "Bitte melde dich an, um diese Seite zu besuchen."
 
-#: web/controllers/auth.ex:37
+#: web/controllers/auth/permit.ex:22
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr "Bitte melde dich mit ausreichenden Rechten an, um diese Seite zu besuchen."
 
@@ -140,15 +141,15 @@ msgstr "Vorname"
 msgid "Last name"
 msgstr "Nachname"
 
-#: web/controllers/session_controller.ex:32
+#: web/controllers/session_controller.ex:31
 msgid "We couldn't find a user with this email."
 msgstr "Wir konnten keinen Benutzer unter dieser E-Mail finden."
 
-#: web/controllers/session_controller.ex:30
+#: web/controllers/session_controller.ex:29
 msgid "You entered the wrong password."
 msgstr "Du hast ein falsches Passwort eingegeben."
 
-#: web/templates/internal/contest/index.html.eex:22
+#: web/templates/internal/contest/index.html.eex:24
 msgid "Add Contest"
 msgstr "Neuen Wettbewerb erstellen"
 
@@ -156,8 +157,9 @@ msgstr "Neuen Wettbewerb erstellen"
 msgid "Certificate date"
 msgstr "Urkundendatum"
 
+#: web/controllers/internal/contest_controller.ex:10
 #: web/templates/internal/contest/index.html.eex:1
-#: web/templates/internal/page/home.html.eex:19
+#: web/templates/internal/page/home.html.eex:21
 msgid "Contests"
 msgstr "Wettbewerbe"
 
@@ -169,7 +171,7 @@ msgstr "Wettbewerb hinzufügen"
 msgid "Day"
 msgstr "Tag"
 
-#: web/templates/internal/contest/index.html.eex:7
+#: web/templates/internal/contest/index.html.eex:8
 msgid "Duration"
 msgstr "Dauer"
 
@@ -203,7 +205,7 @@ msgstr "Runde"
 msgid "Season"
 msgstr "Saison"
 
-#: web/templates/internal/contest/index.html.eex:8
+#: web/templates/internal/contest/index.html.eex:9
 #: web/templates/internal/contest/new.html.eex:34
 msgid "Signup deadline"
 msgstr "Anmeldeschluss"
@@ -212,7 +214,7 @@ msgstr "Anmeldeschluss"
 msgid "Start date"
 msgstr "Beginn"
 
-#: web/controllers/internal/contest_controller.ex:25
+#: web/controllers/internal/contest_controller.ex:44
 msgid "The contest was created."
 msgstr "Der Wettbewerb wurde hinzugefügt."
 
@@ -220,12 +222,12 @@ msgstr "Der Wettbewerb wurde hinzugefügt."
 msgid "Year"
 msgstr "Jahr"
 
-#: web/templates/internal/page/home.html.eex:10
-#: web/views/internal/user_view.ex:20
+#: web/templates/internal/page/home.html.eex:11
+#: web/views/internal/user_view.ex:27
 msgid "Admin"
 msgstr "Admin"
 
-#: web/templates/internal/user/index.html.eex:18
+#: web/templates/internal/user/index.html.eex:22
 msgid "Do you really want to delete this user?"
 msgstr "Möchtest du diesen Benutzer wirklich löschen?"
 
@@ -237,15 +239,15 @@ msgstr "Benutzer bearbeiten"
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: web/views/internal/user_view.ex:21
+#: web/views/internal/user_view.ex:28
 msgid "Inspector"
 msgstr "Inspektion"
 
-#: web/views/internal/user_view.ex:22
+#: web/views/internal/user_view.ex:29
 msgid "LW Organizer"
 msgstr "LW-Organisation"
 
-#: web/views/internal/user_view.ex:23
+#: web/views/internal/user_view.ex:30
 msgid "RW Organizer"
 msgstr "RW-Organisation"
 
@@ -253,17 +255,18 @@ msgstr "RW-Organisation"
 msgid "Role"
 msgstr "Rolle"
 
-#, fuzzy
-#: web/controllers/internal/user_controller.ex:36
+#: web/controllers/internal/user_controller.ex:48
 msgid "The user %{name} was created."
 msgstr "Der Benutzer %{name} wurde hinzugefügt."
 
-#, fuzzy
-#: web/controllers/internal/user_controller.ex:84
+#: web/controllers/internal/user_controller.ex:108
 msgid "The user %{name} was deleted."
 msgstr "Der Benutzer %{name} wurde gelöscht."
 
-#, fuzzy
-#: web/controllers/internal/user_controller.ex:68
+#: web/controllers/internal/user_controller.ex:88
 msgid "The user %{name} was updated."
 msgstr "Der Benutzer %{name} wurde aktualisiert."
+
+#: web/controllers/auth/auth.ex:30
+msgid "You are now signed out. See you soon!"
+msgstr "Du bist jetzt abgemeldet. Bis bald!"

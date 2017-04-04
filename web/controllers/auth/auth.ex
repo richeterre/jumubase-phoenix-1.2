@@ -24,6 +24,13 @@ defmodule Jumubase.Auth do
     end
   end
 
+  def logout(conn) do
+    conn
+    |> Guardian.Plug.sign_out
+    |> put_flash(:info, gettext("You are now signed out. See you soon!"))
+    |> redirect(to: "/")
+  end
+
   def unauthenticated(conn, _params) do
     conn
     |> put_flash(:warning,
