@@ -1,22 +1,25 @@
 <h2><%= gettext("Hosts") %></h2>
 
-<table class="table">
-  <thead>
-    <th><%= gettext("Name") %></th>
-    <th><%= gettext("City") %></th>
-    <th><%= gettext("Country code") %></th>
-    <th><%= gettext("Time zone") %></th>
-  </thead>
-  <tbody>
-    <%= for host <- @hosts do %>
-      <tr>
-        <td><%= host.name %></td>
-        <td><%= host.city %></td>
-        <td><%= host.country_code %></td>
-        <td><%= host.time_zone %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th><%= gettext("Name") %></th>
+      <th><%= gettext("City") %></th>
+      <th><%= gettext("Country code") %></th>
+      <th><%= gettext("Time zone") %></th>
+    </thead>
+    <tbody>
+      <%= for host <- @hosts do %>
+        <tr>
+          <td><%= host.name %></td>
+          <td><%= host.city %></td>
+          <td><%= host.country_code %></td>
+          <td><%= host.time_zone %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= link gettext("Add Host"), to: internal_host_path(@conn, :new), class: "btn btn-primary" %>
