@@ -8,28 +8,48 @@ defmodule Jumubase.Internal.ContestController do
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Contests"), url: internal_contest_path(Endpoint, :index)
 
-  def index(conn, _params) do
-    contests = Repo.all from c in Contest, preload: [:host]
-
-    conn
-    |> assign(:contests, contests)
-    |> render("index.html")
+  def action(conn, _) do
+    # Pass current user as param to all actions
+    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
   end
 
-  def new(conn, _params) do
-    conn
-    |> prepare_for_form(Contest.changeset(%Contest{}))
-    |> add_breadcrumb(icon: "plus", url: internal_contest_path(Endpoint, :new))
-    |> render("new.html")
-  end
+  def index(conn, _params, user) do
+    case Permit.authorize(Contest, :index, user) do
+      :ok ->
+        query = from(c in Contest, preload: :host)
+        |> Permit.accessible_by(user)
 
-  def create(conn, %{"contest" => contest_params}) do
-    changeset = Contest.changeset(%Contest{}, contest_params)
-    case Repo.insert(changeset) do
-      {:ok, _contest} ->
         conn
-        |> put_flash(:success, gettext("The contest was created."))
-        |> redirect(to: internal_contest_path(conn, :index))
+        |> assign(:contests, Repo.all(query))
+        |> render("index.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
+  end
+
+  def new(conn, _params, user) do
+    case Permit.authorize(Contest, :new, user) do
+      :ok ->
+        conn
+        |> prepare_for_form(Contest.changeset(%Contest{}))
+        |> add_breadcrumb(icon: "plus", url: internal_contest_path(Endpoint, :new))
+        |> render("new.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
+  end
+
+  def create(conn, %{"contest" => contest_params}, user) do
+    changeset = Contest.changeset(%Contest{}, contest_params)
+    with :ok <- Permit.authorize(Contest, :create, user),
+      {:ok, contest} <- Repo.insert(changeset)
+    do
+      conn
+      |> put_flash(:success, gettext("The contest was created."))
+      |> redirect(to: internal_contest_path(conn, :index))
+    else
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
       {:error, changeset} ->
         conn
         |> prepare_for_form(changeset)

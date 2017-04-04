@@ -6,19 +6,38 @@
 
 <div class="row">
   <div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= gettext("Admin") %></div>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <%= icon_link("user", gettext("Users"), internal_user_path(@conn, :index)) %>
-        </li>
-        <li class="list-group-item">
-          <%= icon_link("globe", gettext("Hosts"), internal_host_path(@conn, :index)) %>
-        </li>
-        <li class="list-group-item">
-          <%= icon_link("music", gettext("Contests"), internal_contest_path(@conn, :index)) %>
-        </li>
-      </ul>
-    </div>
+    <%= if admin?(@current_user) do %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= gettext("Admin") %></h3>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= icon_link("user", gettext("Users"), internal_user_path(@conn, :index)) %>
+          </li>
+          <li class="list-group-item">
+            <%= icon_link("globe", gettext("Hosts"), internal_host_path(@conn, :index)) %>
+          </li>
+          <li class="list-group-item">
+            <%= icon_link("music", gettext("Contests"), internal_contest_path(@conn, :index)) %>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= gettext("My Contests") %>
+          </h3>
+        </div>
+        <ul class="list-group">
+          <%= for contest <- @contests do %>
+          <li class="list-group-item">
+            <%= name(contest) %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>

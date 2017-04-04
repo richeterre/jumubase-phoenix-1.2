@@ -129,7 +129,7 @@ msgstr ""
 msgid "Please sign in to access this page."
 msgstr ""
 
-#: web/controllers/auth/permit.ex:22
+#: web/controllers/auth/permit.ex:20
 msgid "Please sign in with sufficient permissions to access this page."
 msgstr ""
 
@@ -214,7 +214,7 @@ msgstr ""
 msgid "Start date"
 msgstr ""
 
-#: web/controllers/internal/contest_controller.ex:44
+#: web/controllers/internal/contest_controller.ex:62
 msgid "The contest was created."
 msgstr ""
 
@@ -269,4 +269,8 @@ msgstr ""
 
 #: web/controllers/auth/auth.ex:30
 msgid "You are now signed out. See you soon!"
+msgstr ""
+
+#: web/templates/internal/page/home.html.eex:30
+msgid "My Contests"
 msgstr ""

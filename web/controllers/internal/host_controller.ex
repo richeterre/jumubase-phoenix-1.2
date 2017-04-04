@@ -14,8 +14,8 @@ defmodule Jumubase.Internal.HostController do
     case Permit.authorize(Host, :index, user) do
       :ok ->
         conn
-          |> assign(:hosts, Repo.all(from h in Host, order_by: h.name))
-          |> render("index.html")
+        |> assign(:hosts, Repo.all(from h in Host, order_by: h.name))
+        |> render("index.html")
       {:error, :unauthorized} ->
         conn |> Permit.unauthorized()
     end

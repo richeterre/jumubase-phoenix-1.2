@@ -84,7 +84,7 @@ defmodule Jumubase.Internal.UserController do
       {:ok, user} <- Repo.update(changeset)
     do
       conn
-      |> put_flash(:info,
+      |> put_flash(:success,
         gettext("The user %{name} was updated.", name: full_name(user)))
       |> redirect(to: internal_user_path(conn, :index))
     else
@@ -104,7 +104,7 @@ defmodule Jumubase.Internal.UserController do
         user = Repo.get!(User, id)
         |> Repo.delete!
         conn
-        |> put_flash(:info,
+        |> put_flash(:success,
           gettext("The user %{name} was deleted.", name: full_name(user)))
         |> redirect(to: internal_user_path(conn, :index))
       {:error, :unauthorized} ->
