@@ -16,4 +16,14 @@ defmodule Jumubase.IconHelpers do
       if title, do: [icon_tag(icon), " ", title], else: icon_tag(icon)
     end
   end
+
+  @doc """
+  Returns an Emoji flag character for the given country code.
+  """
+  def emoji_flag(country_code) do
+    country_code
+    |> String.to_charlist
+    |> Enum.map(&(127397 + &1))
+    |> to_string
+  end
 end

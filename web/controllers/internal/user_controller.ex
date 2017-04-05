@@ -10,8 +10,10 @@ defmodule Jumubase.Internal.UserController do
   def index(conn, _params, current_user) do
     case Permit.authorize(User, :index, current_user) do
       :ok ->
+        users = Repo.all(from u in User, order_by: u.first_name)
+        |> Repo.preload(hosts: from(h in Host, order_by: h.country_code))
         conn
-        |> assign(:users, Repo.all(User))
+        |> assign(:users, users)
         |> render("index.html")
       {:error, :unauthorized} ->
         conn |> Permit.unauthorized()

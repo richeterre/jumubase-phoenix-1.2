@@ -9,6 +9,14 @@ defmodule Jumubase.Internal.UserView do
   end
 
   @doc """
+  Returns the user's associated hosts as Emoji flags.
+  """
+  def host_flags(user) do
+    user.hosts
+    |> Enum.map(fn(host) -> emoji_flag(host.country_code) end)
+  end
+
+  @doc """
   Returns all roles in a format suitable for forms.
   """
   def form_roles do
