@@ -10,4 +10,16 @@ defmodule Jumubase.Internal.ContestView do
     contest_year = JumuParams.year(contest.season)
     "#{round_name} #{contest_year}, #{contest.host.name}"
   end
+
+  def name_with_flag(contest) do
+    flag = country_code(contest) |> emoji_flag
+    "#{flag} #{name(contest)}"
+  end
+
+  defp country_code(contest) do
+    case contest.round do
+      1 -> contest.host.country_code
+      2 -> "EU"
+    end
+  end
 end

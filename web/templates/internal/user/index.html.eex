@@ -16,7 +16,7 @@
             <%= role_label_tag(role_label(user), user.role) %>
           </td>
           <td><%= user.email %></td>
-          <td><%= host_flags(user) %></td>
+          <td><%= content_tag :span, host_flags(user), title: host_names(user) %></td>
           <td>
             <%= icon_link("pencil", nil, internal_user_path(@conn, :edit, user),
               class: "btn btn-default btn-xs") %>

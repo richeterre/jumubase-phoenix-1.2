@@ -4,15 +4,13 @@
   <table class="table">
     <thead>
       <th><%= gettext("Name") %></th>
-      <th><%= gettext("Country code") %></th>
       <th><%= gettext("Duration") %></th>
       <th><%= gettext("Signup deadline") %></th>
     </thead>
     <tbody>
       <%= for contest <- @contests do %>
         <tr>
-          <td><%= link name(contest), to: internal_contest_path(@conn, :show, contest) %></td>
-          <td><%= contest.host.country_code %></td>
+          <td><%= link name_with_flag(contest), to: internal_contest_path(@conn, :show, contest) %></td>
           <td><%= "#{contest.start_date}–#{contest.end_date}" %></td>
           <td><%= contest.signup_deadline %></td>
         </tr>

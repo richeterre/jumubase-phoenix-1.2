@@ -17,6 +17,15 @@ defmodule Jumubase.Internal.UserView do
   end
 
   @doc """
+  Returns the names of the user's associated hosts.
+  """
+  def host_names(user) do
+    user.hosts
+    |> Enum.map(&(&1.name))
+    |> Enum.join(", ")
+  end
+
+  @doc """
   Returns all roles in a format suitable for forms.
   """
   def form_roles do

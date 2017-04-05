@@ -6,7 +6,7 @@
     <thead>
       <th><%= gettext("Name") %></th>
       <th><%= gettext("City") %></th>
-      <th><%= gettext("Country code") %></th>
+      <th><%= gettext("Country") %></th>
       <th><%= gettext("Time zone") %></th>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
         <tr>
           <td><%= host.name %></td>
           <td><%= host.city %></td>
-          <td><%= host.country_code %></td>
+          <td><%= emoji_flag(host.country_code) %></td>
           <td><%= host.time_zone %></td>
         </tr>
       <% end %>
