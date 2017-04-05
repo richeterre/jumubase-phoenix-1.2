@@ -11,7 +11,7 @@ defmodule Jumubase.Internal.UserController do
     case Permit.authorize(User, :index, current_user) do
       :ok ->
         users = Repo.all(from u in User, order_by: u.first_name)
-        |> Repo.preload(hosts: from(h in Host, order_by: h.country_code))
+        |> Repo.preload(hosts: from(h in Host, order_by: h.name))
         conn
         |> assign(:users, users)
         |> render("index.html")
@@ -111,7 +111,7 @@ defmodule Jumubase.Internal.UserController do
   end
 
   defp prepare_for_form(conn, changeset) do
-    host_query = from(h in Host, select: {h.name, h.id})
+    host_query = from(h in Host, select: {h.name, h.id}, order_by: h.name)
     conn
     |> assign(:changeset, changeset)
     |> assign(:host_ids, Repo.all(host_query))
