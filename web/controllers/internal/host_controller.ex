@@ -1,14 +1,10 @@
 defmodule Jumubase.Internal.HostController do
   use Jumubase.Web, :controller
+  use Jumubase.Internal.Controller
   alias Jumubase.{Endpoint, Host}
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Hosts"), url: internal_host_path(Endpoint, :index)
-
-  def action(conn, _) do
-    # Pass current user as param to all actions
-    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
-  end
 
   def index(conn, _params, user) do
     case Permit.authorize(Host, :index, user) do

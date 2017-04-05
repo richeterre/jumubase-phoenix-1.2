@@ -1,15 +1,11 @@
 defmodule Jumubase.Internal.UserController do
   use Jumubase.Web, :controller
+  use Jumubase.Internal.Controller
   import Jumubase.Internal.UserView, only: [full_name: 1]
   alias Jumubase.{Endpoint, Host, User}
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Users"), url: internal_user_path(Endpoint, :index)
-
-  def action(conn, _) do
-    # Pass current user as param to all actions
-    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
-  end
 
   def index(conn, _params, current_user) do
     case Permit.authorize(User, :index, current_user) do

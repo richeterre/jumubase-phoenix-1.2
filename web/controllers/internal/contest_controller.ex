@@ -1,5 +1,6 @@
 defmodule Jumubase.Internal.ContestController do
   use Jumubase.Web, :controller
+  use Jumubase.Internal.Controller
   import Jumubase.Internal.ContestView, only: [name: 1]
 
   alias Jumubase.Endpoint
@@ -8,11 +9,6 @@ defmodule Jumubase.Internal.ContestController do
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Contests"), url: internal_contest_path(Endpoint, :index)
-
-  def action(conn, _) do
-    # Pass current user as param to all actions
-    apply(__MODULE__, action_name(conn), [conn, conn.params, conn.assigns.current_user])
-  end
 
   def index(conn, _params, user) do
     case Permit.authorize(Contest, :index, user) do
