@@ -13,7 +13,7 @@ defmodule Jumubase.Internal.ContestController do
   def index(conn, _params, user) do
     case Permit.authorize(Contest, :index, user) do
       :ok ->
-        query = from(c in Contest, preload: :host)
+        query = from(c in Contest, order_by: [desc: c.start_date], preload: :host)
         |> Permit.accessible_by(user)
 
         conn
