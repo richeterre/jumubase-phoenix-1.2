@@ -11,7 +11,7 @@
     <tbody>
       <%= for contest <- @contests do %>
         <tr>
-          <td><%= name(contest) %></td>
+          <td><%= link name(contest), to: internal_contest_path(@conn, :show, contest) %></td>
           <td><%= contest.host.country_code %></td>
           <td><%= "#{contest.start_date}–#{contest.end_date}" %></td>
           <td><%= contest.signup_deadline %></td>
@@ -21,4 +21,5 @@
   </table>
 </div>
 
-<%= link gettext("Add Contest"), to: internal_contest_path(@conn, :new), class: "btn btn-primary" %>
+<%= link gettext("Add Contest"), to: internal_contest_path(@conn, :new),
+  class: "btn btn-primary" %>

@@ -1,5 +1,6 @@
 defmodule Jumubase.Internal.ContestController do
   use Jumubase.Web, :controller
+  import Jumubase.Internal.ContestView, only: [name: 1]
 
   alias Jumubase.Endpoint
   alias Jumubase.Contest
@@ -22,6 +23,19 @@ defmodule Jumubase.Internal.ContestController do
         conn
         |> assign(:contests, Repo.all(query))
         |> render("index.html")
+      {:error, :unauthorized} ->
+        conn |> Permit.unauthorized()
+    end
+  end
+
+  def show(conn, %{"id" => id}, user) do
+    contest = Repo.get!(Contest, id) |> Repo.preload(:host)
+    case Permit.authorize(contest, :show, user) do
+      :ok ->
+        conn
+        |> assign(:contest, contest)
+        |> add_breadcrumb(name: name(contest), url: internal_contest_path(Endpoint, :show, contest))
+        |> render("show.html")
       {:error, :unauthorized} ->
         conn |> Permit.unauthorized()
     end

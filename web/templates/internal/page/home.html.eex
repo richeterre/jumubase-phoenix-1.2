@@ -33,7 +33,7 @@
         <ul class="list-group">
           <%= for contest <- @contests do %>
           <li class="list-group-item">
-            <%= name(contest) %>
+            <%= link name(contest), to: internal_contest_path(@conn, :show, contest) %>
           </li>
           <% end %>
         </ul>
