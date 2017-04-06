@@ -60,7 +60,7 @@ defmodule Jumubase.Web do
       import Jumubase.ErrorHelpers
       import Jumubase.IconHelpers
       import Jumubase.InputHelpers
-      import Jumubase.JumuHelpers
+      import Jumubase.LabelHelpers
       import Jumubase.Gettext
     end
   end

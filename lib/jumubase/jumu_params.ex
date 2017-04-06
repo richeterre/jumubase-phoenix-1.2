@@ -24,4 +24,11 @@ defmodule Jumubase.JumuParams do
       "admin"
     ]
   end
+
+  @doc """
+  Returns all possible genres.
+  """
+  def genres do
+    ["kimu", "classical", "popular"]
+  end
 end

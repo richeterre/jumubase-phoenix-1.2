@@ -39,6 +39,8 @@ msgstr ""
 msgid "Jumu logo"
 msgstr ""
 
+#: web/templates/internal/category/index.html.eex:7
+#: web/templates/internal/category/new.html.eex:7
 #: web/templates/internal/contest/index.html.eex:6
 #: web/templates/internal/host/index.html.eex:7
 #: web/templates/internal/host/new.html.eex:7
@@ -158,7 +160,7 @@ msgstr ""
 
 #: web/controllers/internal/contest_controller.ex:11
 #: web/templates/internal/contest/index.html.eex:1
-#: web/templates/internal/page/home.html.eex:22
+#: web/templates/internal/page/home.html.eex:25
 msgid "Contests"
 msgstr ""
 
@@ -222,7 +224,7 @@ msgid "Year"
 msgstr ""
 
 #: web/templates/internal/page/home.html.eex:12
-#: web/views/internal/user_view.ex:35
+#: web/views/internal/user_view.ex:44
 msgid "Admin"
 msgstr ""
 
@@ -238,15 +240,15 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: web/views/internal/user_view.ex:36
+#: web/views/internal/user_view.ex:45
 msgid "Inspector"
 msgstr ""
 
-#: web/views/internal/user_view.ex:37
+#: web/views/internal/user_view.ex:46
 msgid "LW Organizer"
 msgstr ""
 
-#: web/views/internal/user_view.ex:38
+#: web/views/internal/user_view.ex:47
 msgid "RW Organizer"
 msgstr ""
 
@@ -270,10 +272,54 @@ msgstr ""
 msgid "You are now signed out. See you soon!"
 msgstr ""
 
-#: web/templates/internal/page/home.html.eex:30
+#: web/templates/internal/page/home.html.eex:33
 msgid "My Contests"
 msgstr ""
 
 #: web/templates/internal/host/index.html.eex:9
 msgid "Country"
+msgstr ""
+
+#: web/templates/internal/category/index.html.eex:28
+msgid "Add Category"
+msgstr ""
+
+#: web/controllers/internal/category_controller.ex:7
+#: web/templates/internal/category/index.html.eex:1
+#: web/templates/internal/page/home.html.eex:22
+msgid "Categories"
+msgstr ""
+
+#: web/templates/internal/category/index.html.eex:9
+#: web/templates/internal/category/new.html.eex:17
+msgid "Genre"
+msgstr ""
+
+#: web/templates/internal/category/index.html.eex:8
+#: web/templates/internal/category/new.html.eex:12
+msgid "Short name"
+msgstr ""
+
+#: web/controllers/internal/category_controller.ex:39
+msgid "The category \"%{name}\" was created."
+msgstr ""
+
+#: web/templates/internal/category/index.html.eex:10
+msgid "Type"
+msgstr ""
+
+#: web/templates/internal/category/new.html.eex:31
+msgid "Create Category"
+msgstr ""
+
+#: web/templates/internal/category/new.html.eex:27
+msgid "Ensemble"
+msgstr ""
+
+#: web/templates/internal/category/new.html.eex:1
+msgid "New Category"
+msgstr ""
+
+#: web/templates/internal/category/new.html.eex:22
+msgid "Solo"
 msgstr ""

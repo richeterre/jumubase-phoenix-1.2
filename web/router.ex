@@ -33,6 +33,7 @@ defmodule Jumubase.Router do
     pipe_through [:browser, :browser_auth]
 
     get "/", PageController, :home
+    resources "/categories", CategoryController, only: [:index, :new, :create]
     resources "/contests", ContestController, except: [:edit, :update, :delete]
     resources "/hosts", HostController, only: [:index, :new, :create]
     resources "/users", UserController, except: [:show]

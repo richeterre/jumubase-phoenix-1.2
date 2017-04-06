@@ -1,9 +1,10 @@
 defmodule Jumubase.Permit do
   use Jumubase.Web, :controller
-  alias Jumubase.{Contest, Host, User}
+  alias Jumubase.{Category, Contest, Host, User}
 
   # Action-based rules
   def authorize(_, _, %User{role: "admin"}), do: :ok
+  def authorize(Category, _, %User{}), do: {:error, :unauthorized}
   def authorize(Contest, :index, %User{}), do: :ok
   def authorize(Contest, _, %User{}), do: {:error, :unauthorized}
   def authorize(%Contest{} = contest, _, %User{} = user) do

@@ -1,0 +1,28 @@
+<h2><%= gettext("Categories") %></h2>
+
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th><%= gettext("Name") %></th>
+      <th><%= gettext("Short name") %></th>
+      <th><%= gettext("Genre") %></th>
+      <th><%= gettext("Type") %></th>
+    </thead>
+    <tbody>
+      <%= for category <- @categories do %>
+        <tr>
+          <td><%= category.name %></td>
+          <td><%= category.short_name %></td>
+          <td><%= genre_name(category.genre) %></td>
+          <td>
+            <%= if category.solo, do: category_type_label_tag("Solo") %>
+            <%= if category.ensemble, do: category_type_label_tag("Ensemble") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link gettext("Add Category"), to: internal_category_path(@conn, :new), class: "btn btn-primary" %>

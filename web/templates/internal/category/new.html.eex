@@ -1,0 +1,32 @@
+<h2><%= gettext("New Category") %></h2>
+
+<%= form_for @changeset, internal_category_path(@conn, :create), fn f -> %>
+  <%= render Jumubase.SharedView, "form_errors.html", changeset: @changeset %>
+
+  <div class="form-group">
+    <%= label f, :name, gettext("Name") %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
+  <div class="form-group">
+    <%= label f, :short_name, gettext("Short name") %>
+    <%= text_input f, :short_name, class: "form-control" %>
+    <%= error_tag f, :short_name %>
+  </div>
+  <div class="form-group">
+    <%= label f, :genre, gettext("Genre") %>
+    <%= select f, :genre, form_genres(), class: "form-control" %>
+    <%= error_tag f, :genre %>
+  </div>
+  <div class="form-group">
+    <%= label f, :solo, gettext("Solo") %>
+    <%= checkbox f, :solo, class: "form-control" %>
+    <%= error_tag f, :solo %>
+  </div>
+  <div class="form-group">
+    <%= label f, :ensemble, gettext("Ensemble") %>
+    <%= checkbox f, :ensemble, class: "form-control" %>
+    <%= error_tag f, :ensemble %>
+  </div>
+  <%= submit gettext("Create Category"), class: "btn btn-primary" %>
+<% end %>

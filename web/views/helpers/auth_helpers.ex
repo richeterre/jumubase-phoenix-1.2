@@ -3,25 +3,4 @@ defmodule Jumubase.AuthHelpers do
 
   def signed_in?(conn), do: Guardian.Plug.authenticated?(conn)
   def admin?(current_user), do: current_user.role === "admin"
-
-  @doc """
-  Creates a label tag describing the user's role.
-  """
-  def role_label_tag(label_text, role) do
-    case label_text do
-      nil -> nil
-      text ->
-        content_tag :span, text,
-          class: "label label-#{label_class(role)}"
-    end
-  end
-
-  defp label_class(role) do
-    case role do
-      "admin" -> "danger"
-      "inspector" -> "info"
-      "lw-organizer" -> "warning"
-      _ -> "default"
-    end
-  end
 end

@@ -4,7 +4,7 @@ defmodule Jumubase.UserTest do
   alias Jumubase.User
 
   @valid_attrs %{
-    first_name: "A", last_name: "B", email: "email"}
+    first_name: "A", last_name: "B", email: "email", role: "rw-organizer"}
   @invalid_attrs %{}
 
   describe "changeset" do
