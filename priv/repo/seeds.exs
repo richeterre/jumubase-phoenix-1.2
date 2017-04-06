@@ -13,7 +13,7 @@
 alias Ecto.Changeset
 alias Jumubase.JumuParams
 alias Jumubase.Repo
-alias Jumubase.{Contest, Host, User}
+alias Jumubase.{Category, Contest, Host, User}
 
 Repo.transaction fn ->
   # Create demo hosts
@@ -88,4 +88,15 @@ Repo.transaction fn ->
     }))
   ]
   contests |> Enum.each(&Repo.insert!(&1))
+
+  # Create demo categories
+
+  categories = [
+    Category.changeset(%Category{}, %{name: "\"Kinder musizieren\"", short_name: "Kimu", genre: "kimu", solo: true, ensemble: true}),
+    Category.changeset(%Category{}, %{name: "Klavier solo", short_name: "Klavier", genre: "classical", solo: true, ensemble: false}),
+    Category.changeset(%Category{}, %{name: "Bläser-Ensemble", short_name: "BläserEns", genre: "classical", solo: false, ensemble: true}),
+    Category.changeset(%Category{}, %{name: "Drumset (Pop) solo", short_name: "PopDrums", genre: "popular", solo: true, ensemble: false}),
+    Category.changeset(%Category{}, %{name: "Vokal-Ensemble (Pop)", short_name: "PopVokalEns", genre: "popular", solo: false, ensemble: true}),
+  ]
+  categories |> Enum.each(&Repo.insert!(&1))
 end
