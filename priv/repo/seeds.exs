@@ -10,13 +10,18 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+alias Ecto.Changeset
 alias Jumubase.JumuParams
 alias Jumubase.Repo
-alias Jumubase.User
-alias Jumubase.Host
-alias Jumubase.Contest
+alias Jumubase.{Contest, Host, User}
 
 Repo.transaction fn ->
+  # Create demo hosts
+
+  host1 = Repo.insert!(%Host{name: "DS Helsinki", city: "Helsinki", country_code: "FI", time_zone: "Europe/Helsinki"})
+  host2 = Repo.insert!(%Host{name: "DS Stockholm", city: "Stockholm", country_code: "SE", time_zone: "Europe/Stockholm"})
+  host3 = Repo.insert!(%Host{name: "DS Dublin", city: "Dublin", country_code: "IE", time_zone: "Europe/Dublin"})
+
   # Create demo users
 
   admin_changeset = User.registration_changeset(%User{}, %{
@@ -35,6 +40,7 @@ Repo.transaction fn ->
     password: "secret",
     role: "lw-organizer"
   })
+  |> Changeset.put_assoc(:hosts, [host2])
   Repo.insert!(lw_organizer_changeset)
 
   rw_organizer_changeset = User.registration_changeset(%User{}, %{
@@ -44,6 +50,7 @@ Repo.transaction fn ->
     password: "secret",
     role: "rw-organizer"
   })
+  |> Changeset.put_assoc(:hosts, [host3])
   Repo.insert!(rw_organizer_changeset)
 
   inspector_changeset = User.registration_changeset(%User{}, %{
@@ -54,12 +61,6 @@ Repo.transaction fn ->
     role: "inspector"
   })
   Repo.insert!(inspector_changeset)
-
-  # Create demo hosts
-
-  host1 = Repo.insert!(%Host{name: "DS Helsinki", city: "Helsinki", country_code: "FI", time_zone: "Europe/Helsinki"})
-  host2 = Repo.insert!(%Host{name: "DS Stockholm", city: "Stockholm", country_code: "SE", time_zone: "Europe/Stockholm"})
-  host3 = Repo.insert!(%Host{name: "DS Dublin", city: "Dublin", country_code: "IE", time_zone: "Europe/Dublin"})
 
   # Create demo contests
 
