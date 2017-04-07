@@ -31,5 +31,8 @@ defmodule Jumubase.Category do
       changeset
     end
   end
+
+  def list_order(query) do
+    from c in query, order_by: [asc: c.genre, desc: c.solo, asc: c.name]
   end
 end

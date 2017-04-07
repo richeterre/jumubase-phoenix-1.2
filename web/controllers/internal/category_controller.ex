@@ -8,8 +8,10 @@ defmodule Jumubase.Internal.CategoryController do
   plug :authorize_action, resource: Category
 
   def index(conn, _params) do
+    query = Category |> Category.list_order
+
     conn
-    |> assign(:categories, Repo.all(from h in Category, order_by: h.name))
+    |> assign(:categories, Repo.all(query))
     |> render("index.html")
   end
 
