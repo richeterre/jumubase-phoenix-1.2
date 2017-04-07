@@ -3,5 +3,8 @@
     <p>
       <%= gettext("Please fix the errors below before submitting.") %>
     </p>
+    <p>
+      <%= error_list_tag(Keyword.get_values(@changeset.errors, :base)) %>
+    </p>
   </div>
 <% end %>

@@ -88,3 +88,7 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+#: web/models/category.ex:27
+msgid "At least one category type must be checked."
+msgstr ""

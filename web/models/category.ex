@@ -1,5 +1,6 @@
 defmodule Jumubase.Category do
   use Jumubase.Web, :model
+  import Jumubase.Gettext
 
   schema "categories" do
     field :name, :string
@@ -17,5 +18,18 @@ defmodule Jumubase.Category do
     struct
     |> cast(params, @required_params)
     |> validate_required(@required_params)
+    |> validate_inclusion(:genre, JumuParams.genres())
+    |> validate_type
+  end
+
+  def validate_type(changeset) do
+    if !get_field(changeset, :solo) && !get_field(changeset, :ensemble) do
+      error = dgettext("errors", "At least one category type must be checked.")
+      changeset
+      |> add_error(:base, error)
+    else
+      changeset
+    end
+  end
   end
 end

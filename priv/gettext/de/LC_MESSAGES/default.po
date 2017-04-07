@@ -192,6 +192,7 @@ msgstr "Monat"
 msgid "New Contest"
 msgstr "Neuen Wettbewerb erstellen"
 
+#: web/templates/internal/category/new.html.eex:19
 #: web/templates/internal/contest/new.html.eex:13
 #: web/templates/internal/contest/new.html.eex:19
 #: web/templates/internal/user/form.html.eex:30
@@ -300,7 +301,7 @@ msgstr "Genre"
 msgid "Short name"
 msgstr "Kürzel"
 
-#: web/controllers/internal/category_controller.ex:29
+#: web/controllers/internal/category_controller.ex:31
 msgid "The category \"%{name}\" was created."
 msgstr "Die Kategorie \"%{name}\" wurde hinzugefügt."
 
@@ -308,11 +309,11 @@ msgstr "Die Kategorie \"%{name}\" wurde hinzugefügt."
 msgid "Type"
 msgstr "Typ"
 
-#: web/templates/internal/category/new.html.eex:31
+#: web/templates/internal/category/new.html.eex:32
 msgid "Create Category"
 msgstr "Kategorie hinzufügen"
 
-#: web/templates/internal/category/new.html.eex:27
+#: web/templates/internal/category/new.html.eex:28
 msgid "Ensemble"
 msgstr "Ensemble"
 
@@ -320,6 +321,6 @@ msgstr "Ensemble"
 msgid "New Category"
 msgstr "Neue Kategorie erstellen"
 
-#: web/templates/internal/category/new.html.eex:22
+#: web/templates/internal/category/new.html.eex:23
 msgid "Solo"
 msgstr "Solo"

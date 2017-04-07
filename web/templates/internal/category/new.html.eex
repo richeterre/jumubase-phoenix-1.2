@@ -15,7 +15,8 @@
   </div>
   <div class="form-group">
     <%= label f, :genre, gettext("Genre") %>
-    <%= select f, :genre, form_genres(), class: "form-control" %>
+    <%= select f, :genre, form_genres(), class: "form-control",
+      prompt: gettext("Please choose") %>
     <%= error_tag f, :genre %>
   </div>
   <div class="form-group">
