@@ -40,6 +40,7 @@ defmodule Jumubase.Web do
       import Jumubase.Router.Helpers
       import Jumubase.Gettext
       import Jumubase.Breadcrumbs
+      import Jumubase.Permit.Plug, only: [authorize_action: 2]
     end
   end
 
