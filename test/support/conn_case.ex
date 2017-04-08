@@ -29,6 +29,16 @@ defmodule Jumubase.ConnCase do
 
       # The default endpoint for testing
       @endpoint Jumubase.Endpoint
+
+      # Log in user for integration testing
+      def guardian_login(conn, user) do
+        conn
+        |> bypass_through(Jumubase.Router, [:browser])
+        |> get("/")
+        |> Jumubase.Auth.login(user)
+        |> send_resp(200, "Flush the session")
+        |> recycle()
+      end
     end
   end
 

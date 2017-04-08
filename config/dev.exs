@@ -42,4 +42,6 @@ config :jumubase, Jumubase.Repo,
   hostname: "localhost",
   pool_size: 10
 
-import_config "dev.secret.exs"
+# Configure Guardian
+config :guardian, Guardian,
+  secret_key: String.duplicate("x", 30)

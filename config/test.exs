@@ -18,6 +18,10 @@ config :jumubase, Jumubase.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+# Configure Guardian
+config :guardian, Guardian,
+  secret_key: String.duplicate("x", 30)
+
 # Make tests faster by tuning down the crypto
 config :comeonin, :bcrypt_log_rounds, 4
 config :comeonin, :pbkdf2_rounds, 1
