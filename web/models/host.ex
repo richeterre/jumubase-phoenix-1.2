@@ -7,6 +7,7 @@ defmodule Jumubase.Host do
     field :country_code, :string
     field :time_zone, :string
     has_many :contests, Jumubase.Contest, on_delete: :delete_all
+    many_to_many :users, Jumubase.User, join_through: "hosts_users", on_replace: :delete
 
     timestamps()
   end

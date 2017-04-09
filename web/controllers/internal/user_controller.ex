@@ -46,16 +46,19 @@ defmodule Jumubase.Internal.UserController do
   end
 
   def edit(conn, %{"id" => id}) do
-    user = Repo.get!(User, id)
-    |> Repo.preload(:hosts)
+    user = Repo.get!(User, id) |> Repo.preload(:hosts)
+    conn = authorize_action(conn, resource: user)
 
-    conn
-    |> authorize_action(resource: user)
-    |> assign(:user, user)
-    |> prepare_for_form(User.changeset(user))
-    |> add_breadcrumb(name: full_name(user))
-    |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
-    |> render("edit.html")
+    if !conn.halted do
+      conn
+      |> assign(:user, user)
+      |> prepare_for_form(User.changeset(user))
+      |> add_breadcrumb(name: full_name(user))
+      |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
+      |> render("edit.html")
+    else
+      conn
+    end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
@@ -65,7 +68,7 @@ defmodule Jumubase.Internal.UserController do
     changeset = User.changeset(user, user_params)
     |> put_hosts_assoc(user_params)
 
-    with :ok <- Permit.authorize(user, :update, current_user(conn)),
+    with :ok <- Permit.authorize(current_user(conn), :update, user),
       {:ok, user} <- Repo.update(changeset)
     do
       conn
@@ -86,7 +89,7 @@ defmodule Jumubase.Internal.UserController do
   def delete(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
 
-    with :ok <- Permit.authorize(user, :delete, current_user(conn)),
+    with :ok <- Permit.authorize(current_user(conn), :delete, user),
       {:ok, _user} <- Repo.delete(user)
     do
       conn

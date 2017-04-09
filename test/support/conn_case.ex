@@ -26,12 +26,32 @@ defmodule Jumubase.ConnCase do
       import Ecto.Query
 
       import Jumubase.Router.Helpers
+      import Jumubase.Factory
 
       # The default endpoint for testing
       @endpoint Jumubase.Endpoint
 
-      # Log in user for integration testing
-      def guardian_login(conn, user) do
+      def login_if_needed(%{conn: conn} = config) do
+        if user_role = config[:login_as] do
+          config = login_user(conn, user_role)
+          {:ok, config}
+        else
+          {:ok, %{conn: conn}}
+        end
+      end
+
+      def assert_unauthorized(conn) do
+        assert redirected_to(conn) == page_path(conn, :home)
+        assert conn.halted
+      end
+
+      defp login_user(conn, role) do
+        user = insert(:user, %{role: role})
+        conn = guardian_login(conn, user)
+        %{conn: conn, user: user}
+      end
+
+      defp guardian_login(conn, user) do
         conn
         |> bypass_through(Jumubase.Router, [:browser])
         |> get("/")

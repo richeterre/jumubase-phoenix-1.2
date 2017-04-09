@@ -6,7 +6,7 @@ defmodule Jumubase.Permit.Plug do
     action = conn.private[:phoenix_action]
     resource = Keyword.get(opts, :resource)
 
-    case Permit.authorize(resource, action, user) do
+    case Permit.authorize(user, action, resource) do
       :ok -> conn
       {:error, :unauthorized} -> Auth.unauthorized(conn)
     end
@@ -18,22 +18,20 @@ defmodule Jumubase.Permit do
   alias Jumubase.{Category, Contest, Host, User}
 
   # Action-based rules
-  def authorize(_, _, %User{role: "admin"}), do: :ok
-  def authorize(Category, _, %User{}), do: {:error, :unauthorized}
-  def authorize(Contest, :index, %User{}), do: :ok
-  def authorize(Contest, _, %User{}), do: {:error, :unauthorized}
-  def authorize(%Contest{} = contest, _, %User{} = user) do
-    cond do
-      contest.host_id in host_ids(user) -> :ok
-      true -> {:error, :unauthorized}
-    end
+  def authorize(%User{role: "admin"}, _, _), do: :ok
+  def authorize(%User{}, _, Category), do: {:error, :unauthorized}
+  def authorize(%User{}, :index, Contest), do: :ok
+  def authorize(%User{}, :show, Contest), do: :ok
+  def authorize(%User{}, _, Contest), do: {:error, :unauthorized}
+  def authorize(%User{} = user, :show, %Contest{} = contest) do
+    if contest.host_id in host_ids(user), do: :ok, else: {:error, :unauthorized}
   end
-  def authorize(Host, _, %User{}), do: {:error, :unauthorized}
-  def authorize(User, _, %User{}), do: {:error, :unauthorized}
+  def authorize(%User{}, _, Host), do: {:error, :unauthorized}
+  def authorize(%User{}, _, User), do: {:error, :unauthorized}
   def authorize(%User{}, _, %User{}), do: {:error, :unauthorized}
 
-  def authorized?(target, action, user) do
-    authorize(target, action, user) == :ok
+  def authorized?(user, action, target) do
+    authorize(user, action, target) == :ok
   end
 
   # Scope-based rules

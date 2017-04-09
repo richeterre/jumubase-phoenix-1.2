@@ -19,6 +19,6 @@
   </table>
 </div>
 
-<%= if authorized?(Jumubase.Contest, :new, @current_user), do:
+<%= if authorized?(@current_user, :new, Jumubase.Contest), do:
   link gettext("Add Contest"), to: internal_contest_path(@conn, :new),
   class: "btn btn-primary" %>

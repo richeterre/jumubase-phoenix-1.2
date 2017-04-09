@@ -23,11 +23,16 @@ defmodule Jumubase.Internal.ContestController do
 
   def show(conn, %{"id" => id}) do
     contest = Repo.get!(Contest, id) |> Repo.preload(:host)
-    conn
-    |> authorize_action(resource: contest)
-    |> assign(:contest, contest)
-    |> add_breadcrumb(name: name(contest), url: internal_contest_path(Endpoint, :show, contest))
-    |> render("show.html")
+    conn = authorize_action(conn, resource: contest)
+
+    if !conn.halted do
+      conn
+      |> assign(:contest, contest)
+      |> add_breadcrumb(name: name(contest), url: internal_contest_path(Endpoint, :show, contest))
+      |> render("show.html")
+    else
+      conn
+    end
   end
 
   def new(conn, _params) do
