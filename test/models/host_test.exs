@@ -1,23 +1,36 @@
 defmodule Jumubase.HostTest do
   use Jumubase.ModelCase
-
   alias Jumubase.Host
 
-  @valid_attrs %{
-    city: "Helsinki",
-    country_code: "fi",
-    name: "DS Helsinki",
-    time_zone: "Europe/Helsinki"
-  }
-  @invalid_attrs %{}
+  describe "changeset" do
+    test "with valid attributes" do
+      params = params_with_assocs(:host)
+      changeset = Host.changeset(%Host{}, params)
+      assert changeset.valid?
+    end
 
-  test "changeset with valid attributes" do
-    changeset = Host.changeset(%Host{}, @valid_attrs)
-    assert changeset.valid?
-  end
+    test "without a name" do
+      params = params_with_assocs(:host, name: "")
+      changeset = Host.changeset(%Host{}, params)
+      refute changeset.valid?
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = Host.changeset(%Host{}, @invalid_attrs)
-    refute changeset.valid?
+    test "without a city" do
+      params = params_with_assocs(:host, city: "")
+      changeset = Host.changeset(%Host{}, params)
+      refute changeset.valid?
+    end
+
+    test "without a country code" do
+      params = params_with_assocs(:host, country_code: "")
+      changeset = Host.changeset(%Host{}, params)
+      refute changeset.valid?
+    end
+
+    test "without a time zone" do
+      params = params_with_assocs(:host, time_zone: "")
+      changeset = Host.changeset(%Host{}, params)
+      refute changeset.valid?
+    end
   end
 end

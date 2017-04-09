@@ -22,6 +22,7 @@ defmodule Jumubase.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Jumubase.ModelCase
+      import Jumubase.Factory
     end
   end
 

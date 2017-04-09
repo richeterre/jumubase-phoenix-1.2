@@ -1,42 +1,65 @@
 defmodule Jumubase.UserTest do
   use Jumubase.ModelCase
-
   alias Jumubase.User
-
-  @valid_attrs %{
-    first_name: "A", last_name: "B", email: "email", role: "rw-organizer"}
-  @invalid_attrs %{}
 
   describe "changeset" do
     test "with valid attributes" do
-      changeset = User.changeset(%User{}, @valid_attrs)
+      params = params_with_assocs(:user)
+      changeset = User.changeset(%User{}, params)
       assert changeset.valid?
     end
 
-    test "with invalid attributes" do
-      changeset = User.changeset(%User{}, @invalid_attrs)
+    test "without a first name" do
+      params = params_with_assocs(:user, first_name: "")
+      changeset = User.changeset(%User{}, params)
       refute changeset.valid?
+    end
+
+    test "without a last name" do
+      params = params_with_assocs(:user, last_name: "")
+      changeset = User.changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
+    test "without an email" do
+      params = params_with_assocs(:user, email: "")
+      changeset = User.changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
+    test "with an invalid role" do
+      for invalid_role <- [nil, "", "xyz"] do
+        params = params_with_assocs(:user, role: invalid_role)
+        changeset = User.changeset(%User{}, params)
+        refute changeset.valid?
+      end
     end
   end
 
   describe "registration_changeset" do
+    test "with valid attributes" do
+      params = params_with_assocs(:user)
+      changeset = User.registration_changeset(%User{}, params)
+      assert changeset.valid?
+    end
+
+    test "without a password" do
+      params = params_with_assocs(:user, password: nil)
+      changeset = User.registration_changeset(%User{}, params)
+      refute changeset.valid?
+    end
+
     test "with too short password" do
-      attrs = Map.put(@valid_attrs, :password, "12345")
-      changeset = User.registration_changeset(%User{}, attrs)
+      params = params_with_assocs(:user, password: "12345")
+      changeset = User.registration_changeset(%User{}, params)
       assert {:password, {"should be at least %{count} character(s)",
         count: 6, validation: :length, min: 6}}
         in changeset.errors
     end
 
-    test "with long enough password" do
-      attrs = Map.put(@valid_attrs, :password, "123456")
-      changeset = User.registration_changeset(%User{}, attrs)
-      assert changeset.valid?
-    end
-
     test "password hashing" do
-      attrs = Map.put(@valid_attrs, :password, "123456")
-      changeset = User.registration_changeset(%User{}, attrs)
+      params = params_with_assocs(:user)
+      changeset = User.registration_changeset(%User{}, params)
       %{password: pass, password_hash: pass_hash} = changeset.changes
 
       assert changeset.valid?
