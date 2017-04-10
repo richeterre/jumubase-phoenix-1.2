@@ -12,9 +12,8 @@ defmodule Jumubase.Internal.ContestController do
   plug :authorize_action, resource: Contest
 
   def index(conn, _params) do
-    user = conn.assigns.current_user
     query = from(c in Contest, order_by: [desc: c.start_date], preload: :host)
-    |> Permit.accessible_by(user)
+    |> Permit.accessible_by(current_user(conn))
 
     conn
     |> assign(:contests, Repo.all(query))
