@@ -47,9 +47,8 @@ defmodule Jumubase.Internal.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id) |> Repo.preload(:hosts)
-    conn = authorize_action(conn, resource: user)
 
-    if !conn.halted do
+    if Permit.authorized?(current_user(conn), :edit, user) do
       conn
       |> assign(:user, user)
       |> prepare_for_form(User.changeset(user))
@@ -57,7 +56,7 @@ defmodule Jumubase.Internal.UserController do
       |> add_breadcrumb(icon: "pencil", url: internal_user_path(Endpoint, :edit, user))
       |> render("edit.html")
     else
-      conn
+      conn |> Auth.unauthorized
     end
   end
 

@@ -1,7 +1,8 @@
 defmodule Jumubase.Internal.ContestController do
   use Jumubase.Web, :controller
+  import Jumubase.Auth, only: [current_user: 1]
   import Jumubase.Internal.ContestView, only: [name: 1]
-
+  alias Jumubase.Auth
   alias Jumubase.Endpoint
   alias Jumubase.{Contest, ContestCategory, Host}
 
@@ -21,7 +22,6 @@ defmodule Jumubase.Internal.ContestController do
   end
 
   def show(conn, %{"id" => id}) do
-    conn = authorize_action(conn, resource: contest)
     cc = ContestCategory
     |> ContestCategory.list_order
 
@@ -29,13 +29,13 @@ defmodule Jumubase.Internal.ContestController do
     |> Repo.preload([:host, [contest_categories: cc]])
     |> Repo.preload(contest_categories: :category)
 
-    if !conn.halted do
+    if Permit.authorized?(current_user(conn), :show, contest) do
       conn
       |> assign(:contest, contest)
       |> add_breadcrumb(name: name(contest), url: internal_contest_path(Endpoint, :show, contest))
       |> render("show.html")
     else
-      conn
+      conn |> Auth.unauthorized
     end
   end
 
