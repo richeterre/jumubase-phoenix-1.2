@@ -11,6 +11,7 @@ defmodule Jumubase.Contest do
     field :timetables_public, :boolean, default: false
     belongs_to :host, Jumubase.Host
     has_many :contest_categories, Jumubase.ContestCategory, on_delete: :delete_all
+    has_many :performances, through: [:contest_categories, :performances]
 
     timestamps()
   end

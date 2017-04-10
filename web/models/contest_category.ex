@@ -1,6 +1,6 @@
 defmodule Jumubase.ContestCategory do
   use Jumubase.Web, :model
-  alias Jumubase.{Category, Contest}
+  alias Jumubase.{Category, Contest, Performance}
 
   schema "contest_categories" do
     field :min_age_group, :string
@@ -9,6 +9,7 @@ defmodule Jumubase.ContestCategory do
     field :max_advancing_age_group, :string
     belongs_to :contest, Contest
     belongs_to :category, Category
+    has_many :performances, Performance
 
     timestamps()
   end

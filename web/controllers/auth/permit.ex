@@ -15,26 +15,36 @@ end
 
 defmodule Jumubase.Permit do
   import Ecto.Query
-  alias Jumubase.{Category, Contest, Host, User}
-
-  # Action-based rules
-  def authorize(%User{role: "admin"}, _, _), do: :ok
-  def authorize(%User{}, _, Category), do: {:error, :unauthorized}
-  def authorize(%User{}, :index, Contest), do: :ok
-  def authorize(%User{}, :show, Contest), do: :ok
-  def authorize(%User{}, _, Contest), do: {:error, :unauthorized}
-  def authorize(%User{} = user, :show, %Contest{} = contest) do
-    if contest.host_id in host_ids(user), do: :ok, else: {:error, :unauthorized}
-  end
-  def authorize(%User{}, _, Host), do: {:error, :unauthorized}
-  def authorize(%User{}, _, User), do: {:error, :unauthorized}
-  def authorize(%User{}, _, %User{}), do: {:error, :unauthorized}
+  alias Jumubase.{Contest, User}
 
   def authorized?(user, action, target) do
     authorize(user, action, target) == :ok
   end
 
-  # Scope-based rules
+  ## Action-based rules
+
+  # Admins can do anything
+  def authorize(%User{role: "admin"}, _, _), do: :ok
+
+  # Contests
+  def authorize(%User{}, :index, Contest), do: :ok
+  def authorize(%User{}, :show, Contest), do: :ok
+  def authorize(%User{} = user, :show, %Contest{} = contest) do
+    if contest.host_id in host_ids(user), do: :ok, else: {:error, :unauthorized}
+  end
+  def authorize(%User{} = user, :list_performances, %Contest{} = contest) do
+    if contest.host_id in host_ids(user), do: :ok, else: {:error, :unauthorized}
+  end
+
+  # Performances
+  def authorize(%User{}, :index, Performance), do: :ok
+
+  # Everything is forbidden by default
+  def authorize(%User{}, _, _), do: {:error, :unauthorized}
+
+  ## Scope-based rules
+
+  # Contests
   def accessible_by(query, %User{role: "admin"}), do: query
   def accessible_by(query, %User{} = user) do
     from c in query, where: c.host_id in ^host_ids(user)

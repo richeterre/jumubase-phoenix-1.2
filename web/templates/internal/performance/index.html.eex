@@ -1,0 +1,18 @@
+<h2><%= gettext("Performances") %></h2>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th><%= gettext("Category") %></th>
+      <th><%= gettext("Age group") %></th>
+    </thead>
+    <tbody>
+      <%= for performance <- @performances do %>
+        <tr>
+          <td><%= performance.contest_category.category.name %></td>
+          <td><%= performance.age_group %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

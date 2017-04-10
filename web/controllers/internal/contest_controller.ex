@@ -1,7 +1,7 @@
 defmodule Jumubase.Internal.ContestController do
   use Jumubase.Web, :controller
   import Jumubase.Auth, only: [current_user: 1]
-  import Jumubase.Internal.ContestView, only: [name: 1]
+  import Jumubase.Internal.ContestView, only: [name_with_flag: 1]
   alias Jumubase.Auth
   alias Jumubase.Endpoint
   alias Jumubase.{Contest, ContestCategory, Host}
@@ -31,7 +31,7 @@ defmodule Jumubase.Internal.ContestController do
     if Permit.authorized?(current_user(conn), :show, contest) do
       conn
       |> assign(:contest, contest)
-      |> add_breadcrumb(name: name(contest), url: internal_contest_path(Endpoint, :show, contest))
+      |> add_breadcrumb(name: name_with_flag(contest), url: internal_contest_path(Endpoint, :show, contest))
       |> render("show.html")
     else
       conn |> Auth.unauthorized

@@ -159,6 +159,7 @@ msgid "Certificate date"
 msgstr "Urkundendatum"
 
 #: web/controllers/internal/contest_controller.ex:10
+#: web/controllers/internal/performance_controller.ex:9
 #: web/templates/internal/contest/index.html.eex:1
 #: web/templates/internal/page/home.html.eex:25
 msgid "Contests"
@@ -216,7 +217,7 @@ msgstr "Anmeldeschluss"
 msgid "Start date"
 msgstr "Beginn"
 
-#: web/controllers/internal/contest_controller.ex:55
+#: web/controllers/internal/contest_controller.ex:54
 msgid "The contest was created."
 msgstr "Der Wettbewerb wurde hinzugefügt."
 
@@ -328,3 +329,20 @@ msgstr "Solo"
 #: web/templates/internal/contest/show.html.eex:3
 msgid "Contest categories"
 msgstr "Wettbewerbskategorien"
+
+#: web/templates/internal/performance/index.html.eex:7
+msgid "Age group"
+msgstr "Altersgruppe"
+
+#: web/templates/internal/performance/index.html.eex:6
+msgid "Category"
+msgstr "Kategorie"
+
+#: web/templates/internal/contest/show.html.eex:13
+msgid "List performances"
+msgstr "Vorspiele auflisten"
+
+#: web/controllers/internal/performance_controller.ex:21
+#: web/templates/internal/performance/index.html.eex:1
+msgid "Performances"
+msgstr "Vorspiele"
