@@ -1,7 +1,8 @@
 defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
-  alias Jumubase.{Category, Contest, ContestCategory, Host, User, Venue}
+  alias Jumubase.{Category, Contest, ContestCategory, Host}
+  alias Jumubase.{Performance, User, Venue}
 
   def category_factory do
     %Category{
@@ -47,6 +48,18 @@ defmodule Jumubase.Factory do
     }
   end
 
+  def performance_factory do
+    %Performance{
+      contest_category: build(:contest_category),
+      edit_code: sequence(:edit_code, &(&1 |> to_edit_code)),
+      age_group: nil,
+      stage_time: nil,
+      stage_venue: nil,
+      predecessor: nil,
+      results_public: false
+    }
+  end
+
   def user_factory do
     %User{
       first_name: "John",
@@ -62,5 +75,9 @@ defmodule Jumubase.Factory do
       name: "Aula",
       host: build(:host)
     }
+  end
+
+  defp to_edit_code(sequence_number) do
+    sequence_number |> Integer.to_string |> String.rjust(5, ?0)
   end
 end

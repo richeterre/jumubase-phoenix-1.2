@@ -2,7 +2,7 @@ defmodule Jumubase.ContestCategoryTest do
   use Jumubase.ModelCase
   alias Jumubase.ContestCategory
 
-  @invalid_ags ["", "ii", "Ic", "VIII"]
+  @invalid_age_groups ["", "ii", "Ic", "VIII"]
 
   describe "changeset" do
     test "with valid attributes" do
@@ -30,8 +30,8 @@ defmodule Jumubase.ContestCategoryTest do
     end
 
     test "with an invalid minimum age group" do
-      for invalid_ag <- @invalid_ags do
-        params = params_with_assocs(:contest_category, min_age_group: invalid_ag)
+      for invalid_age_group <- @invalid_age_groups do
+        params = params_with_assocs(:contest_category, min_age_group: invalid_age_group)
         changeset = ContestCategory.changeset(%ContestCategory{}, params)
         refute changeset.valid?
       end
@@ -44,24 +44,24 @@ defmodule Jumubase.ContestCategoryTest do
     end
 
     test "with an invalid maximum age group" do
-      for invalid_ag <- @invalid_ags do
-        params = params_with_assocs(:contest_category, max_age_group: invalid_ag)
+      for invalid_age_group <- @invalid_age_groups do
+        params = params_with_assocs(:contest_category, max_age_group: invalid_age_group)
         changeset = ContestCategory.changeset(%ContestCategory{}, params)
         refute changeset.valid?
       end
     end
 
     test "with an invalid minimum advancing age group" do
-      for invalid_ag <- @invalid_ags do
-        params = params_with_assocs(:contest_category, min_advancing_age_group: invalid_ag)
+      for invalid_age_group <- @invalid_age_groups do
+        params = params_with_assocs(:contest_category, min_advancing_age_group: invalid_age_group)
         changeset = ContestCategory.changeset(%ContestCategory{}, params)
         refute changeset.valid?
       end
     end
 
     test "with an invalid maximum advancing age group" do
-      for invalid_ag <- @invalid_ags do
-        params = params_with_assocs(:contest_category, max_advancing_age_group: invalid_ag)
+      for invalid_age_group <- @invalid_age_groups do
+        params = params_with_assocs(:contest_category, max_advancing_age_group: invalid_age_group)
         changeset = ContestCategory.changeset(%ContestCategory{}, params)
         refute changeset.valid?
       end

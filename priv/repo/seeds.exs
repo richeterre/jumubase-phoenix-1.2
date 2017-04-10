@@ -89,50 +89,7 @@ Repo.transaction fn ->
 
   # Create demo contest categories
 
-  for rw_contest <- [contest1, contest2, contest3] do
-    insert(:contest_category, %{
-      contest: rw_contest,
-      category: kimu,
-      min_age_group: "Ia",
-      max_age_group: "II",
-      min_advancing_age_group: nil,
-      max_advancing_age_group: nil
-    })
-    insert(:contest_category, %{
-      contest: rw_contest,
-      category: piano,
-      min_age_group: "Ia",
-      max_age_group: "VI",
-      min_advancing_age_group: "II",
-      max_advancing_age_group: "VI"
-    })
-    insert(:contest_category, %{
-      contest: rw_contest,
-      category: wind_ens,
-      min_age_group: "Ia",
-      max_age_group: "VI",
-      min_advancing_age_group: "II",
-      max_advancing_age_group: "VI"
-    })
-    insert(:contest_category, %{
-      contest: rw_contest,
-      category: pop_drums,
-      min_age_group: "Ia",
-      max_age_group: "VI",
-      min_advancing_age_group: "II",
-      max_advancing_age_group: "VI"
-    })
-    insert(:contest_category, %{
-      contest: rw_contest,
-      category: pop_vocal_ens,
-      min_age_group: "Ia",
-      max_age_group: "VII",
-      min_advancing_age_group: "III",
-      max_advancing_age_group: "VII"
-    })
-  end
-
-  insert(:contest_category, %{
+  lw_piano = insert(:contest_category, %{
     contest: contest4,
     category: piano,
     min_age_group: "II",
@@ -140,7 +97,7 @@ Repo.transaction fn ->
     min_advancing_age_group: "III",
     max_advancing_age_group: "VI"
   })
-  insert(:contest_category, %{
+  lw_wind_ens = insert(:contest_category, %{
     contest: contest4,
     category: wind_ens,
     min_age_group: "II",
@@ -148,7 +105,7 @@ Repo.transaction fn ->
     min_advancing_age_group: "III",
     max_advancing_age_group: "VI"
   })
-  insert(:contest_category, %{
+  lw_pop_drums = insert(:contest_category, %{
     contest: contest4,
     category: pop_drums,
     min_age_group: "II",
@@ -156,7 +113,7 @@ Repo.transaction fn ->
     min_advancing_age_group: "III",
     max_advancing_age_group: "VI"
   })
-  insert(:contest_category, %{
+  lw_pop_vocal_ens = insert(:contest_category, %{
     contest: contest4,
     category: pop_vocal_ens,
     min_age_group: "III",
@@ -164,4 +121,58 @@ Repo.transaction fn ->
     min_advancing_age_group: nil,
     max_advancing_age_group: nil
   })
+
+  for rw_contest <- [contest1, contest2, contest3] do
+    rw_kimu = insert(:contest_category, %{
+      contest: rw_contest,
+      category: kimu,
+      min_age_group: "Ia",
+      max_age_group: "II",
+      min_advancing_age_group: nil,
+      max_advancing_age_group: nil
+    })
+    rw_piano = insert(:contest_category, %{
+      contest: rw_contest,
+      category: piano,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    rw_wind_ens = insert(:contest_category, %{
+      contest: rw_contest,
+      category: wind_ens,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    rw_pop_drums = insert(:contest_category, %{
+      contest: rw_contest,
+      category: pop_drums,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    rw_pop_vocal_ens = insert(:contest_category, %{
+      contest: rw_contest,
+      category: pop_vocal_ens,
+      min_age_group: "Ia",
+      max_age_group: "VII",
+      min_advancing_age_group: "III",
+      max_advancing_age_group: "VII"
+    })
+
+    insert(:performance, contest_category: rw_kimu)
+    rw_piano_perf = insert(:performance, contest_category: rw_piano)
+    rw_wind_ens_perf = insert(:performance, contest_category: rw_wind_ens)
+    rw_pop_drums_perf = insert(:performance, contest_category: rw_pop_drums)
+    rw_pop_vocal_ens_perf = insert(:performance, contest_category: rw_pop_vocal_ens)
+
+    insert(:performance, contest_category: lw_piano, predecessor: rw_piano_perf)
+    insert(:performance, contest_category: lw_wind_ens, predecessor: rw_wind_ens_perf)
+    insert(:performance, contest_category: lw_pop_drums, predecessor: rw_pop_drums_perf)
+    insert(:performance, contest_category: lw_pop_vocal_ens, predecessor: rw_pop_vocal_ens_perf)
+  end
 end
