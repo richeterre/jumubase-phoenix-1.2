@@ -10,6 +10,7 @@ defmodule Jumubase.Contest do
     field :certificate_date, Ecto.Date
     field :timetables_public, :boolean, default: false
     belongs_to :host, Jumubase.Host
+    has_many :contest_categories, Jumubase.ContestCategory, on_delete: :delete_all
 
     timestamps()
   end

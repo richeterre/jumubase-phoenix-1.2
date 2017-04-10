@@ -216,7 +216,7 @@ msgstr ""
 msgid "Start date"
 msgstr ""
 
-#: web/controllers/internal/contest_controller.ex:46
+#: web/controllers/internal/contest_controller.ex:55
 msgid "The contest was created."
 msgstr ""
 
@@ -261,11 +261,11 @@ msgstr ""
 msgid "The user %{name} was created."
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:94
+#: web/controllers/internal/user_controller.ex:96
 msgid "The user %{name} was deleted."
 msgstr ""
 
-#: web/controllers/internal/user_controller.ex:73
+#: web/controllers/internal/user_controller.ex:75
 msgid "The user %{name} was updated."
 msgstr ""
 
@@ -323,4 +323,8 @@ msgstr ""
 
 #: web/templates/internal/category/new.html.eex:23
 msgid "Solo"
+msgstr ""
+
+#: web/templates/internal/contest/show.html.eex:3
+msgid "Contest categories"
 msgstr ""

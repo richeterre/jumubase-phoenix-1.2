@@ -1,1 +1,11 @@
 <h2><%= name(@contest) %></h2>
+
+<h3> <%= gettext("Contest categories") %> </h3>
+<ul>
+  <%= for contest_category <- @contest.contest_categories do %>
+    <li>
+      <%= contest_category.category.name %>
+      <%= age_group_badge_tag(age_group_range(contest_category)) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,5 +1,6 @@
 defmodule Jumubase.Internal.ContestView do
   use Jumubase.Web, :view
+  import Jumubase.Internal.ContestCategoryView, only: [age_group_range: 1]
 
   def round_name(round) do
     case round do

@@ -3,8 +3,7 @@ defmodule Jumubase.Internal.ContestController do
   import Jumubase.Internal.ContestView, only: [name: 1]
 
   alias Jumubase.Endpoint
-  alias Jumubase.Contest
-  alias Jumubase.Host
+  alias Jumubase.{Contest, ContestCategory, Host}
 
   plug :add_breadcrumb, icon: "home", url: internal_page_path(Endpoint, :home)
   plug :add_breadcrumb, name: gettext("Contests"), url: internal_contest_path(Endpoint, :index)
@@ -22,8 +21,13 @@ defmodule Jumubase.Internal.ContestController do
   end
 
   def show(conn, %{"id" => id}) do
-    contest = Repo.get!(Contest, id) |> Repo.preload(:host)
     conn = authorize_action(conn, resource: contest)
+    cc = ContestCategory
+    |> ContestCategory.list_order
+
+    contest = Repo.get!(Contest, id)
+    |> Repo.preload([:host, [contest_categories: cc]])
+    |> Repo.preload(contest_categories: :category)
 
     if !conn.halted do
       conn

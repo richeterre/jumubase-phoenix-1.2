@@ -1,13 +1,14 @@
 defmodule Jumubase.ContestCategory do
   use Jumubase.Web, :model
+  alias Jumubase.{Category, Contest}
 
   schema "contest_categories" do
     field :min_age_group, :string
     field :max_age_group, :string
     field :min_advancing_age_group, :string
     field :max_advancing_age_group, :string
-    belongs_to :contest, Jumubase.Contest
-    belongs_to :category, Jumubase.Category
+    belongs_to :contest, Contest
+    belongs_to :category, Category
 
     timestamps()
   end
@@ -23,5 +24,11 @@ defmodule Jumubase.ContestCategory do
     |> validate_inclusion(:max_age_group, JumuParams.age_groups())
     |> validate_inclusion(:min_advancing_age_group, JumuParams.age_groups())
     |> validate_inclusion(:max_advancing_age_group, JumuParams.age_groups())
+  end
+
+  def list_order(query) do
+    from cc in query,
+    join: c in subquery(Category |> Category.list_order),
+    on: cc.category_id == c.id
   end
 end

@@ -216,7 +216,7 @@ msgstr "Anmeldeschluss"
 msgid "Start date"
 msgstr "Beginn"
 
-#: web/controllers/internal/contest_controller.ex:46
+#: web/controllers/internal/contest_controller.ex:55
 msgid "The contest was created."
 msgstr "Der Wettbewerb wurde hinzugefügt."
 
@@ -261,11 +261,11 @@ msgstr "Rolle"
 msgid "The user %{name} was created."
 msgstr "Der Benutzer %{name} wurde hinzugefügt."
 
-#: web/controllers/internal/user_controller.ex:94
+#: web/controllers/internal/user_controller.ex:96
 msgid "The user %{name} was deleted."
 msgstr "Der Benutzer %{name} wurde gelöscht."
 
-#: web/controllers/internal/user_controller.ex:73
+#: web/controllers/internal/user_controller.ex:75
 msgid "The user %{name} was updated."
 msgstr "Der Benutzer %{name} wurde aktualisiert."
 
@@ -324,3 +324,7 @@ msgstr "Neue Kategorie erstellen"
 #: web/templates/internal/category/new.html.eex:23
 msgid "Solo"
 msgstr "Solo"
+
+#: web/templates/internal/contest/show.html.eex:3
+msgid "Contest categories"
+msgstr "Wettbewerbskategorien"

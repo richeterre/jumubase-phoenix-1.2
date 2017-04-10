@@ -10,10 +10,11 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
+import Jumubase.Factory
 alias Ecto.Changeset
 alias Jumubase.JumuParams
 alias Jumubase.Repo
-alias Jumubase.{Category, Contest, Host, User}
+alias Jumubase.{Category, Host, User}
 
 Repo.transaction fn ->
   # Create demo hosts
@@ -66,37 +67,101 @@ Repo.transaction fn ->
 
   season = 54
   year = JumuParams.year(season)
-  contest_attrs = %{
-    season: season,
-    round: 1,
-    start_date: %{day: 1, month: 1, year: year},
-    end_date: %{day: 2, month: 1, year: year},
-    signup_deadline: %{day: 15, month: 12, year: year - 1},
-    timetables_public: false
-  }
 
-  contests = [
-    Contest.changeset(%Contest{}, Map.put(contest_attrs, :host_id, host1.id)),
-    Contest.changeset(%Contest{}, Map.put(contest_attrs, :host_id, host2.id)),
-    Contest.changeset(%Contest{}, Map.put(contest_attrs, :host_id, host3.id)),
-    Contest.changeset(%Contest{}, Map.merge(contest_attrs, %{
-      host_id: host1.id,
-      round: 2,
-      start_date: %{day: 15, month: 3, year: year},
-      end_date: %{day: 17, month: 3, year: year},
-      signup_deadline: %{day: 28, month: 2, year: year},
-    }))
-  ]
-  contests |> Enum.each(&Repo.insert!(&1))
+  contest1 = insert(:contest, host: host1)
+  contest2 = insert(:contest, host: host2)
+  contest3 = insert(:contest, host: host3)
+  contest4 = insert(:contest, %{
+    host: host1,
+    round: 2,
+    start_date: %{day: 15, month: 3, year: year},
+    end_date: %{day: 17, month: 3, year: year},
+    signup_deadline: %{day: 28, month: 2, year: year}
+  })
 
   # Create demo categories
 
-  categories = [
-    Category.changeset(%Category{}, %{name: "\"Kinder musizieren\"", short_name: "Kimu", genre: "kimu", solo: true, ensemble: true}),
-    Category.changeset(%Category{}, %{name: "Klavier solo", short_name: "Klavier", genre: "classical", solo: true, ensemble: false}),
-    Category.changeset(%Category{}, %{name: "Bläser-Ensemble", short_name: "BläserEns", genre: "classical", solo: false, ensemble: true}),
-    Category.changeset(%Category{}, %{name: "Drumset (Pop) solo", short_name: "PopDrums", genre: "popular", solo: true, ensemble: false}),
-    Category.changeset(%Category{}, %{name: "Vokal-Ensemble (Pop)", short_name: "PopVokalEns", genre: "popular", solo: false, ensemble: true}),
-  ]
-  categories |> Enum.each(&Repo.insert!(&1))
+  kimu = Repo.insert!(%Category{name: "\"Kinder musizieren\"", short_name: "Kimu", genre: "kimu", solo: true, ensemble: true})
+  piano = Repo.insert!(%Category{name: "Klavier solo", short_name: "Klavier", genre: "classical", solo: true, ensemble: false})
+  wind_ens = Repo.insert!(%Category{name: "Bläser-Ensemble", short_name: "BläserEns", genre: "classical", solo: false, ensemble: true})
+  pop_drums = Repo.insert!(%Category{name: "Drumset (Pop) solo", short_name: "PopDrums", genre: "popular", solo: true, ensemble: false})
+  pop_vocal_ens = Repo.insert!(%Category{name: "Vokal-Ensemble (Pop)", short_name: "PopVokalEns", genre: "popular", solo: false, ensemble: true})
+
+  # Create demo contest categories
+
+  for rw_contest <- [contest1, contest2, contest3] do
+    insert(:contest_category, %{
+      contest: rw_contest,
+      category: kimu,
+      min_age_group: "Ia",
+      max_age_group: "II",
+      min_advancing_age_group: nil,
+      max_advancing_age_group: nil
+    })
+    insert(:contest_category, %{
+      contest: rw_contest,
+      category: piano,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    insert(:contest_category, %{
+      contest: rw_contest,
+      category: wind_ens,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    insert(:contest_category, %{
+      contest: rw_contest,
+      category: pop_drums,
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
+    })
+    insert(:contest_category, %{
+      contest: rw_contest,
+      category: pop_vocal_ens,
+      min_age_group: "Ia",
+      max_age_group: "VII",
+      min_advancing_age_group: "III",
+      max_advancing_age_group: "VII"
+    })
+  end
+
+  insert(:contest_category, %{
+    contest: contest4,
+    category: piano,
+    min_age_group: "II",
+    max_age_group: "VI",
+    min_advancing_age_group: "III",
+    max_advancing_age_group: "VI"
+  })
+  insert(:contest_category, %{
+    contest: contest4,
+    category: wind_ens,
+    min_age_group: "II",
+    max_age_group: "VI",
+    min_advancing_age_group: "III",
+    max_advancing_age_group: "VI"
+  })
+  insert(:contest_category, %{
+    contest: contest4,
+    category: pop_drums,
+    min_age_group: "II",
+    max_age_group: "VI",
+    min_advancing_age_group: "III",
+    max_advancing_age_group: "VI"
+  })
+  insert(:contest_category, %{
+    contest: contest4,
+    category: pop_vocal_ens,
+    min_age_group: "III",
+    max_age_group: "VII",
+    min_advancing_age_group: nil,
+    max_advancing_age_group: nil
+  })
 end

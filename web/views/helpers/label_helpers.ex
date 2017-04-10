@@ -2,6 +2,13 @@ defmodule Jumubase.LabelHelpers do
   use Phoenix.HTML
 
   @doc """
+  Creates a badge for an age group.
+  """
+  def age_group_badge_tag(text) do
+    content_tag :span, text, class: "badge"
+  end
+
+  @doc """
   Creates a label for a category type.
   """
   def category_type_label_tag(text) do

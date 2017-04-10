@@ -1,7 +1,7 @@
 defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
-  alias Jumubase.{Category, Contest, Host, User}
+  alias Jumubase.{Category, Contest, ContestCategory, Host, User}
 
   def category_factory do
     %Category{
@@ -24,6 +24,17 @@ defmodule Jumubase.Factory do
       end_date: %{day: 2, month: 1, year: year},
       signup_deadline: %{day: 15, month: 12, year: year - 1},
       timetables_public: false
+    }
+  end
+
+  def contest_category_factory do
+    %ContestCategory{
+      contest: build(:contest),
+      category: build(:category),
+      min_age_group: "Ia",
+      max_age_group: "VI",
+      min_advancing_age_group: "II",
+      max_advancing_age_group: "VI"
     }
   end
 
