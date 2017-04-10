@@ -1,7 +1,7 @@
 defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
-  alias Jumubase.{Category, Contest, ContestCategory, Host, User}
+  alias Jumubase.{Category, Contest, ContestCategory, Host, User, Venue}
 
   def category_factory do
     %Category{
@@ -41,9 +41,9 @@ defmodule Jumubase.Factory do
   def host_factory do
     %Host{
       name: sequence(:name, &"Host #{&1}"),
-      city: "Helsinki",
-      country_code: "FI",
-      time_zone: "Europe/Helsinki"
+      city: "Jumutown",
+      country_code: "DE",
+      time_zone: "Europe/Berlin"
     }
   end
 
@@ -54,6 +54,13 @@ defmodule Jumubase.Factory do
       email: sequence(:email, &"user-#{&1}@example.org"),
       password: "secret",
       role: "rw-organizer"
+    }
+  end
+
+  def venue_factory do
+    %Venue{
+      name: "Aula",
+      host: build(:host)
     }
   end
 end
