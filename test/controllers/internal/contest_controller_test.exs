@@ -11,8 +11,8 @@ defmodule Jumubase.ContestControllerTest do
     for role <- List.delete(JumuParams.roles(), "admin") do
       @tag login_as: role
       test "(#{role}) can list only associated contests", %{conn: conn, user: user} do
-        own_contest = own_contest(user)
-        other_contest = other_contest(user)
+        own_contest = insert_associated_contest(user)
+        other_contest = insert(:contest)
         conn = get(conn, internal_contest_path(conn, :index))
 
         assert html_response(conn, 200)
@@ -22,16 +22,14 @@ defmodule Jumubase.ContestControllerTest do
 
       @tag login_as: role
       test "(#{role}) cannot view an unassociated contest", %{conn: conn} do
-        host = insert(:host, users: [])
-        contest = insert(:contest, host: host)
+        contest = insert(:contest)
         conn = get(conn, internal_contest_path(conn, :show, contest))
         assert_unauthorized(conn)
       end
 
       @tag login_as: role
       test "(#{role}) can view an associated contest", %{conn: conn, user: user} do
-        host = insert(:host, users: [user])
-        contest = insert(:contest, host: host)
+        contest = insert_associated_contest(user)
         conn = get(conn, internal_contest_path(conn, :show, contest))
         assert html_response(conn, 200)
       end
@@ -51,8 +49,8 @@ defmodule Jumubase.ContestControllerTest do
   describe "an admin user" do
     @tag login_as: "admin"
     test "can list all contests", %{conn: conn, user: user} do
-      own_contest = own_contest(user)
-      other_contest = other_contest(user)
+      own_contest = insert_associated_contest(user)
+      other_contest = insert(:contest)
       conn = get(conn, internal_contest_path(conn, :index))
 
       assert html_response(conn, 200)
@@ -79,20 +77,9 @@ defmodule Jumubase.ContestControllerTest do
 
     @tag login_as: "admin"
     test "can view any contest", %{conn: conn} do
-      host = insert(:host, users: [])
-      contest = insert(:contest, host: host)
+      contest = insert(:contest)
       conn = get(conn, internal_contest_path(conn, :show, contest))
       assert html_response(conn, 200)
     end
-  end
-
-  defp own_contest(user) do
-    own_host = insert(:host, users: [user])
-    insert(:contest, host: own_host)
-  end
-
-  defp other_contest(_user) do
-    other_host = insert(:host, users: [])
-    insert(:contest, host: other_host)
   end
 end

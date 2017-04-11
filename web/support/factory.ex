@@ -77,6 +77,14 @@ defmodule Jumubase.Factory do
     }
   end
 
+  @doc """
+  Inserts a contest associated with the given user via its host.
+  """
+  def insert_associated_contest(%User{} = user) do
+    host = build(:host, users: [user])
+    insert(:contest, host: host)
+  end
+
   defp to_edit_code(sequence_number) do
     sequence_number |> Integer.to_string |> String.rjust(5, ?0)
   end
