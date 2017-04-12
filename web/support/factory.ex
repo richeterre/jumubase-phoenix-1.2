@@ -2,7 +2,9 @@ defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
   alias Jumubase.{Category, Contest, ContestCategory, Host}
-  alias Jumubase.{Performance, User, Venue}
+  alias Jumubase.{Participant, Performance, User, Venue}
+
+  @season 54
 
   def category_factory do
     %Category{
@@ -15,8 +17,7 @@ defmodule Jumubase.Factory do
   end
 
   def contest_factory do
-    season = 54
-    year = JumuParams.year(season)
+    year = JumuParams.year(@season)
     %Contest{
       season: 54,
       round: 1,
@@ -45,6 +46,16 @@ defmodule Jumubase.Factory do
       city: "Jumutown",
       country_code: "DE",
       time_zone: "Europe/Berlin"
+    }
+  end
+
+  def participant_factory do
+    %Participant{
+      given_name: "Parti",
+      family_name: sequence(:given_name, &"Cipant #{&1}"),
+      birthdate: %{day: 1, month: 1, year: JumuParams.year(@season) - 14},
+      phone: "123456789",
+      email: sequence(:email, &"participant.#{&1}@example-org")
     }
   end
 
