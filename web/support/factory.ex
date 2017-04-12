@@ -1,7 +1,7 @@
 defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
-  alias Jumubase.{Category, Contest, ContestCategory, Host}
+  alias Jumubase.{Category, Contest, ContestCategory, Host, Instrument}
   alias Jumubase.{Participant, Performance, User, Venue}
 
   @season 54
@@ -46,6 +46,12 @@ defmodule Jumubase.Factory do
       city: "Jumutown",
       country_code: "DE",
       time_zone: "Europe/Berlin"
+    }
+  end
+
+  def instrument_factory do
+    %Instrument{
+      name: sequence(:name, &"Instrument #{&1}")
     }
   end
 
