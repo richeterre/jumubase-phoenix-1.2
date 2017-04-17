@@ -15,7 +15,7 @@ end
 
 defmodule Jumubase.Permit do
   import Ecto.Query
-  alias Jumubase.{Contest, User}
+  alias Jumubase.{Contest, Performance, User}
 
   def authorized?(user, action, target) do
     authorize(user, action, target) == :ok
