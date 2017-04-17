@@ -1,10 +1,20 @@
 defmodule Jumubase.Factory do
   use ExMachina.Ecto, repo: Jumubase.Repo
   alias Jumubase.JumuParams
-  alias Jumubase.{Category, Contest, ContestCategory, Host, Instrument}
-  alias Jumubase.{Participant, Performance, User, Venue}
+  alias Jumubase.{Appearance, Category, Contest, ContestCategory, Host}
+  alias Jumubase.{Instrument, Participant, Performance, User, Venue}
 
   @season 54
+
+  def appearance_factory do
+    %Appearance{
+      performance: build(:performance),
+      participant: build(:participant),
+      participant_role: "soloist",
+      instrument: build(:instrument),
+      points: nil
+    }
+  end
 
   def category_factory do
     %Category{

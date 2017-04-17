@@ -38,4 +38,18 @@ defmodule Jumubase.JumuParams do
   def genres do
     ["kimu", "classical", "popular"]
   end
+
+  @doc """
+  Returns all possible participant roles.
+  """
+  def participant_roles do
+    ["soloist", "ensemblist", "accompanist"]
+  end
+
+  @doc """
+  Returns the full point range.
+  """
+  def points do
+    0..25
+  end
 end
