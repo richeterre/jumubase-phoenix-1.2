@@ -1,0 +1,7 @@
+<h2><%= category_name(@performance) %></h2>
+
+<ul>
+  <%= for appearance <- @performance.appearances do %>
+    <li><%= participant_info(appearance) %></li>
+  <% end %>
+</ul>

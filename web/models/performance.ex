@@ -9,6 +9,7 @@ defmodule Jumubase.Performance do
     belongs_to :contest_category, Jumubase.ContestCategory
     belongs_to :stage_venue, Jumubase.Venue
     belongs_to :predecessor, Jumubase.Performance
+    has_many :appearances, Jumubase.Appearance
 
     timestamps()
   end

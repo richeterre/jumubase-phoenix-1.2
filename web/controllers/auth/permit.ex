@@ -38,6 +38,14 @@ defmodule Jumubase.Permit do
 
   # Performances
   def authorize(%User{}, :index, Performance), do: :ok
+  def authorize(%User{}, :show, Performance), do: :ok
+  def authorize(%User{} = user, :show, %Performance{} = performance) do
+    if performance.contest_category.contest.host_id in host_ids(user) do
+      :ok
+    else
+      {:error, :unauthorized}
+    end
+  end
 
   # Everything is forbidden by default
   def authorize(%User{}, _, _), do: {:error, :unauthorized}

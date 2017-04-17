@@ -9,7 +9,11 @@
     <tbody>
       <%= for performance <- @performances do %>
         <tr>
-          <td><%= performance.contest_category.category.name %></td>
+          <td>
+            <%= link category_name(performance),
+              to: internal_contest_performance_path(@conn, :show, @contest, performance)
+              %>
+          </td>
           <td><%= performance.age_group %></td>
         </tr>
       <% end %>
