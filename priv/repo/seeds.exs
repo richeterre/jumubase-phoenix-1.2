@@ -82,20 +82,20 @@ Repo.transaction fn ->
   # Create demo categories
 
   kimu = Repo.insert!(%Category{name: "\"Kinder musizieren\"", short_name: "Kimu", genre: "kimu", solo: true, ensemble: true})
-  piano = Repo.insert!(%Category{name: "Klavier solo", short_name: "Klavier", genre: "classical", solo: true, ensemble: false})
+  vocal = Repo.insert!(%Category{name: "Gesang solo", short_name: "Gesang", genre: "classical", solo: true, ensemble: false})
   wind_ens = Repo.insert!(%Category{name: "Bläser-Ensemble", short_name: "BläserEns", genre: "classical", solo: false, ensemble: true})
   pop_drums = Repo.insert!(%Category{name: "Drumset (Pop) solo", short_name: "PopDrums", genre: "popular", solo: true, ensemble: false})
   pop_vocal_ens = Repo.insert!(%Category{name: "Vokal-Ensemble (Pop)", short_name: "PopVokalEns", genre: "popular", solo: false, ensemble: true})
 
   # Create demo contest categories
 
-  lw_piano = insert(:contest_category, %{
+  lw_vocal = insert(:contest_category, %{
     contest: contest4,
-    category: piano,
+    category: vocal,
     min_age_group: "II",
-    max_age_group: "VI",
+    max_age_group: "VII",
     min_advancing_age_group: "III",
-    max_advancing_age_group: "VI"
+    max_advancing_age_group: "VII"
   })
   lw_wind_ens = insert(:contest_category, %{
     contest: contest4,
@@ -131,13 +131,13 @@ Repo.transaction fn ->
       min_advancing_age_group: nil,
       max_advancing_age_group: nil
     })
-    rw_piano = insert(:contest_category, %{
+    rw_vocal = insert(:contest_category, %{
       contest: rw_contest,
-      category: piano,
+      category: vocal,
       min_age_group: "Ia",
-      max_age_group: "VI",
+      max_age_group: "VII",
       min_advancing_age_group: "II",
-      max_advancing_age_group: "VI"
+      max_advancing_age_group: "VII"
     })
     rw_wind_ens = insert(:contest_category, %{
       contest: rw_contest,
@@ -164,13 +164,25 @@ Repo.transaction fn ->
       max_advancing_age_group: "VII"
     })
 
-    insert(:performance, contest_category: rw_kimu)
-    rw_piano_perf = insert(:performance, contest_category: rw_piano)
-    rw_wind_ens_perf = insert(:performance, contest_category: rw_wind_ens)
-    rw_pop_drums_perf = insert(:performance, contest_category: rw_pop_drums)
-    rw_pop_vocal_ens_perf = insert(:performance, contest_category: rw_pop_vocal_ens)
+    rw_kimu_perf = insert(:performance, contest_category: rw_kimu)
+    insert(:appearance, performance: rw_kimu_perf, participant_role: "soloist")
 
-    insert(:performance, contest_category: lw_piano, predecessor: rw_piano_perf)
+    rw_vocal_perf = insert(:performance, contest_category: rw_vocal, stage_time: %{year: 2017, month: 1, day: 1, hour: 12, minute: 0})
+    insert(:appearance, performance: rw_vocal_perf, participant_role: "soloist")
+    insert(:appearance, performance: rw_vocal_perf, participant_role: "accompanist")
+
+    rw_wind_ens_perf = insert(:performance, contest_category: rw_wind_ens)
+    insert_list(3, :appearance, performance: rw_wind_ens_perf, participant_role: "ensemblist")
+
+    rw_pop_drums_perf = insert(:performance, contest_category: rw_pop_drums)
+    insert(:appearance, performance: rw_pop_drums_perf, participant_role: "soloist")
+    insert_list(3, :appearance, performance: rw_pop_drums_perf, participant_role: "accompanist")
+
+    rw_pop_vocal_ens_perf = insert(:performance, contest_category: rw_pop_vocal_ens)
+    insert_list(2, :appearance, performance: rw_pop_vocal_ens_perf, participant_role: "ensemblist")
+    insert_list(3, :appearance, performance: rw_pop_vocal_ens_perf, participant_role: "accompanist")
+
+    insert(:performance, contest_category: lw_vocal, predecessor: rw_vocal_perf)
     insert(:performance, contest_category: lw_wind_ens, predecessor: rw_wind_ens_perf)
     insert(:performance, contest_category: lw_pop_drums, predecessor: rw_pop_drums_perf)
     insert(:performance, contest_category: lw_pop_vocal_ens, predecessor: rw_pop_vocal_ens_perf)
