@@ -1,4 +1,16 @@
-<h2><%= category_name(@performance) %></h2>
+<h2><%= gettext("Performance Details") %></h2>
+
+<p>
+  <%= gettext("Category") %>: <%= category_name(@performance) %>
+  <br>
+  <%= if stage_time = @performance.stage_time do %>
+    <%= gettext("Stage time") %>: <%= stage_time %>
+    <br>
+  <% end %>
+  <%= gettext("Edit code") %>: <code><%= @performance.edit_code %></code>
+</p>
+
+<h3><%= gettext("Participants") %></h3>
 
 <ul>
   <%= for appearance <- @performance.appearances do %>
