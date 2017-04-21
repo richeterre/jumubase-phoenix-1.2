@@ -4,10 +4,10 @@ defmodule Jumubase.Contest do
   schema "contests" do
     field :season, :integer
     field :round, :integer
-    field :start_date, Ecto.Date
-    field :end_date, Ecto.Date
-    field :signup_deadline, Ecto.Date
-    field :certificate_date, Ecto.Date
+    field :start_date, Timex.Ecto.Date
+    field :end_date, Timex.Ecto.Date
+    field :signup_deadline, Timex.Ecto.Date
+    field :certificate_date, Timex.Ecto.Date
     field :timetables_public, :boolean, default: false
     belongs_to :host, Jumubase.Host
     has_many :contest_categories, Jumubase.ContestCategory, on_delete: :delete_all

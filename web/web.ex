@@ -19,6 +19,7 @@ defmodule Jumubase.Web do
   def model do
     quote do
       use Ecto.Schema
+      use Timex.Ecto.Timestamps
 
       alias Jumubase.JumuParams
       import Ecto

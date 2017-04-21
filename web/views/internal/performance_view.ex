@@ -16,4 +16,9 @@ defmodule Jumubase.Internal.PerformanceView do
   def participant_info(%Appearance{} = appearance) do
     "#{full_name(appearance.participant)}, #{appearance.instrument.name}"
   end
+
+  def stage_time(%Performance{} = performance) do
+    # TODO: Adjust format for other locales
+    Timex.format!(performance.stage_time, "{D}. {Mfull} {YYYY}, {h24}:{0m}")
+  end
 end

@@ -3,8 +3,8 @@
 <p>
   <%= gettext("Category") %>: <%= category_name(@performance) %>
   <br>
-  <%= if stage_time = @performance.stage_time do %>
-    <%= gettext("Stage time") %>: <%= stage_time %>
+  <%= if @performance.stage_time do %>
+    <%= gettext("Stage time") %>: <%= stage_time(@performance) %>
     <br>
   <% end %>
   <%= gettext("Edit code") %>: <code><%= @performance.edit_code %></code>

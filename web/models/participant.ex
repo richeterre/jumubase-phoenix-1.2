@@ -4,7 +4,7 @@ defmodule Jumubase.Participant do
   schema "participants" do
     field :given_name, :string
     field :family_name, :string
-    field :birthdate, Ecto.Date
+    field :birthdate, Timex.Ecto.Date
     field :phone, :string
     field :email, :string
 

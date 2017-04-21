@@ -5,11 +5,17 @@
 # is restricted to this project.
 use Mix.Config
 
+default_locale = "de"
+
 # General application configuration
 config :jumubase,
   ecto_repos: [Jumubase.Repo]
 config :jumubase, Jumubase.Gettext,
-  default_locale: "de"
+  default_locale: default_locale
+
+# Configures date/time formatting
+config :timex,
+  default_locale: default_locale
 
 # Configures the endpoint
 config :jumubase, Jumubase.Endpoint,

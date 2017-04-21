@@ -4,7 +4,7 @@ defmodule Jumubase.Performance do
   schema "performances" do
     field :edit_code, :string
     field :age_group, :string
-    field :stage_time, Ecto.DateTime
+    field :stage_time, Timex.Ecto.DateTime
     field :results_public, :boolean, default: false
     belongs_to :contest_category, Jumubase.ContestCategory
     belongs_to :stage_venue, Jumubase.Venue
