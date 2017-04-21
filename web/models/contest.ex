@@ -12,6 +12,7 @@ defmodule Jumubase.Contest do
     belongs_to :host, Jumubase.Host
     has_many :contest_categories, Jumubase.ContestCategory, on_delete: :delete_all
     has_many :performances, through: [:contest_categories, :performances]
+    has_many :venues, through: [:host, :venues]
 
     timestamps()
   end

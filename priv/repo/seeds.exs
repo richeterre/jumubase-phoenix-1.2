@@ -23,6 +23,13 @@ Repo.transaction fn ->
   host2 = Repo.insert!(%Host{name: "DS Stockholm", city: "Stockholm", country_code: "SE", time_zone: "Europe/Stockholm"})
   host3 = Repo.insert!(%Host{name: "DS Dublin", city: "Dublin", country_code: "IE", time_zone: "Europe/Dublin"})
 
+  # Create demo venues
+
+  insert(:venue, name: "Aula", host: host1)
+  insert(:venue, name: "Musikraum", host: host1)
+  insert(:venue, name: "Aula", host: host2)
+  insert(:venue, name: "Lynn Hall", host: host3)
+
   # Create demo users
 
   admin_changeset = User.registration_changeset(%User{}, %{

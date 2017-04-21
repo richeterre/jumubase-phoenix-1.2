@@ -28,6 +28,12 @@ defmodule Jumubase.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
+  scope "/api/v1", Jumubase do
+    pipe_through :api
+
+    resources "/contests", ContestController, only: [:index]
+  end
+
   # Routes that require authentication
   scope "/internal", Jumubase.Internal, as: :internal do
     pipe_through [:browser, :browser_auth]
