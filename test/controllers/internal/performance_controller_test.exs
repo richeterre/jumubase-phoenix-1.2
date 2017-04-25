@@ -21,6 +21,22 @@ defmodule Jumubase.PerformanceControllerTest do
         conn = get(conn, internal_contest_performance_path(conn, :index, contest))
         assert_unauthorized(conn)
       end
+
+      @tag login_as: role
+      test "(#{role}) can view a performance of an associated contest", %{conn: conn, user: user} do
+        contest = insert_associated_contest(user)
+        performance = insert_contest_performance(contest)
+        conn = get(conn, internal_contest_performance_path(conn, :show, contest, performance))
+        assert html_response(conn, 200)
+      end
+
+      @tag login_as: role
+      test "(#{role}) cannot view a performance of an unassociated contest", %{conn: conn} do
+        contest = insert(:contest)
+        performance = insert_contest_performance(contest)
+        conn = get(conn, internal_contest_performance_path(conn, :show, contest, performance))
+        assert_unauthorized(conn)
+      end
     end
   end
 
@@ -36,6 +52,14 @@ defmodule Jumubase.PerformanceControllerTest do
     test "can list performances of an unassociated contest", %{conn: conn} do
       contest = insert(:contest)
       conn = get conn, internal_contest_performance_path(conn, :index, contest)
+      assert html_response(conn, 200)
+    end
+
+    @tag login_as: "admin"
+    test "can view any performance", %{conn: conn} do
+      contest = insert(:contest)
+      performance = insert_contest_performance(contest)
+      conn = get conn, internal_contest_performance_path(conn, :show, contest, performance)
       assert html_response(conn, 200)
     end
   end

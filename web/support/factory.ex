@@ -112,6 +112,11 @@ defmodule Jumubase.Factory do
     insert(:contest, host: host)
   end
 
+  def insert_contest_performance(%Contest{} = contest) do
+    contest_category = build(:contest_category, contest: contest)
+    insert(:performance, contest_category: contest_category)
+  end
+
   defp to_edit_code(sequence_number) do
     sequence_number |> Integer.to_string |> String.rjust(5, ?0)
   end
