@@ -18,8 +18,9 @@ defmodule Jumubase.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Jumubase, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :ex_machina, :timex]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy,
+     :logger, :gettext, :phoenix_ecto, :postgrex, :ex_machina, :timex,
+     :absinthe, :absinthe_plug, :absinthe_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -42,7 +43,10 @@ defmodule Jumubase.Mixfile do
      {:guardian, "~> 0.14"},
      {:ex_machina, "~> 2.0"},
      {:timex, "~> 3.0"},
-     {:timex_ecto, "~> 3.0"}]
+     {:timex_ecto, "~> 3.0"},
+     {:absinthe, "~> 1.2.0"},
+     {:absinthe_plug, "~> 1.2.0"},
+     {:absinthe_ecto, git: "https://github.com/absinthe-graphql/absinthe_ecto.git"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

@@ -30,9 +30,11 @@ defmodule Jumubase.Router do
 
   scope "/api/v1", Jumubase do
     pipe_through :api
-
     resources "/contests", ContestController, only: [:index]
   end
+
+  forward "/graphql", Absinthe.Plug, schema: Jumubase.Schema
+  forward "/graphiql", Absinthe.Plug.GraphiQL, schema: Jumubase.Schema
 
   # Routes that require authentication
   scope "/internal", Jumubase.Internal, as: :internal do
